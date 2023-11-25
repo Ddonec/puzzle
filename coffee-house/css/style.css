@@ -1,0 +1,390 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter&display=swap");
+
+
+a{
+    text-decoration: none;
+    color: unset;
+}
+body {
+    background: #e1d4c9;
+    padding: 20px 40px 40px 40px;
+    width: 1360px;
+    margin: 0 auto;
+    border: solid;
+    position: relative;
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: #403f3d;
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Action/link & button */
+    font-family: Inter, sans-serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
+}
+.nav-menu {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+    padding: 0;
+}
+.header-menu-icon-container {
+    display: flex;
+    gap: 8px;
+    align-items: top;
+}
+
+.first-section {
+    margin-top: 20px;
+
+    background-image: url(../assets/images/coffe-bg-fs.jpeg);
+    width: calc(100% - 200px);
+    border-radius: 40px;
+    padding: 100px;
+
+    color: var(--text-light, #e1d4c9);
+}
+
+.text-and-button-in-first-section {
+    display: grid;
+    gap: 40px;
+    width: 530px;
+}
+.h1 {
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Heading/heading-1 */
+    font-family: Inter, sans-serif;
+    font-size: 72px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 105%;
+}
+.h1 span {
+    color: #b0907a;
+    font-style: italic;
+}
+.small-text-fs {
+    color: var(--text-light, #e1d4c9);
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Body/medium */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+}
+.button-menu-fs {
+    display: flex;
+    width: 200px;
+    padding: 20px 78px;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    border-radius: 100px;
+    background: #e1d4c9;
+    border: none;
+}
+.button-menu-fs {
+    color: var(--text-dark, #403f3d);
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Action/link & button */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
+}
+.second-container {
+    margin-top: 100px;
+    margin-bottom: 100px;
+    display: grid;
+    gap: 40px;
+}
+h2 {
+    color: var(--text-dark, #403f3d);
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Heading/heading-2 */
+    font-family: Inter;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 75px */
+}
+h2 span {
+    color: #b0907a;
+    font-style: italic;
+}
+.slider-second-section {
+    /* border: salmon solid; */
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.product-into-slider-container {
+    /* border: black solid; */
+    width: 100%;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.discriptoons-product-ss {
+    display: grid;
+    gap: 16px;
+    width: 480px;
+    text-align: center;
+
+    color: var(--text-dark, #403f3d);
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Heading/heading-3 */
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 30px */
+}
+.dis-discription-p-ss {
+    color: var(--text-dark, #403f3d);
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Body/medium */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+}
+
+.pagination-indicator-ss {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    justify-content: center;
+}
+.pagination-indicator-ss div {
+    width: 40px;
+    height: 4px;
+    border-radius: 100px;
+    background: var(--border-light, #c1b6ad);
+}
+
+.round-arrow-container {
+    width: 60px;
+    height: 60px;
+    border: #403f3d 1px solid;
+    border-radius: 50%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.flex-kostil-fs {
+    display: flex;
+    margin-top: 40px;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+.image-in-third-container-1 {
+    background-image: url(../assets/images/about-1.png);
+    height: 590px;
+    border-radius: 20px;
+    width: calc((100vw - 120px) / 2);
+    max-width: 660px;
+}
+.image-in-third-container-2 {
+    background-image: url(../assets/images/about-2.png);
+    height: 430px;
+    border-radius: 20px;
+    margin-top: 40px;
+    width: calc((100vw - 120px) / 2);
+    max-width: 660px;
+}
+.image-in-third-container-3 {
+    background-image: url(../assets/images/about-3.png);
+    height: 430px;
+    border-radius: 20px;
+    width: calc((100vw - 120px) / 2);
+    max-width: 660px;
+}
+.image-in-third-container-4 {
+    background-image: url(../assets/images/about-4.png);
+    background-size: 100%;
+
+    height: 590px;
+    border-radius: 20px;
+    margin-top: 40px;
+    width: calc((100vw - 120px) / 2);
+    max-width: 660px;
+}
+
+.four-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.left-fs {
+    width: 630px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    justify-content: center;
+}
+.h2-four {
+    text-align: left;
+}
+.right-fs {
+    width: 630px;
+    height: 630px;
+    max-width: 630px;
+    max-height: 630px;
+    background-image: url(../assets/images/mobile-screens.png);
+}
+
+.buttons-mobile-app-container {
+    display: flex;
+    gap: 20px;
+    align-items: left;
+}
+
+.discriptoons-app-four {
+    color: var(--text-dark, #403f3d);
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Body/medium */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 150%; /* 24px */
+}
+.mobile-store-btn {
+    width: 200px;
+    border-radius: 100px;
+    border: 1px solid #665f55;
+    padding: 12px 20px;
+    display: flex;
+    gap: 8px;
+}
+
+.avalible-app-text {
+    color: var(--text-dark, #403f3d);
+    text-align: center;
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Body/caption */
+    font-family: Inter;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 140%; /* 14px */
+}
+.appstore-app-text {
+    color: var(--text-dark, #403f3d);
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Action/link & button */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
+}
+
+footer {
+    border-radius: 40px;
+    background: var(--background-container, #665f55);
+    padding: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.h2-footer {
+    color: var(--text-light, #e1d4c9);
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Heading/heading-2 */
+    font-family: Inter;
+    font-size: 60px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 75px */
+    text-align: left;
+}
+
+.h2-footer span {
+    color: var(--text-accent, #b0907a);
+}
+.left-footer,
+.right-footer {
+    width: calc((100vw - 380px) / 2);
+    max-width: 530px;
+    display: grid;
+    gap: 40px;
+}
+.footer-social-list {
+    display: flex;
+    gap: 12px;
+}
+.footer-social-list li {
+    display: flex;
+    width: 60px;
+    height: 60px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 100px;
+    border: 1px solid var(--border-light, #c1b6ad);
+}
+
+.right-footer {
+    color: var(--text-light, #e1d4c9);
+    font-feature-settings: "clig" off, "liga" off;
+    align-content: center;
+
+    /* Desktop/Heading/heading-3 */
+    font-family: Inter;
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 125%; /* 30px */
+}
+.right-footer-list {
+    color: var(--text-light, #e1d4c9);
+    font-feature-settings: "clig" off, "liga" off;
+
+    /* Desktop/Action/link & button */
+    font-family: Inter;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 150%; /* 24px */
+}
+.right-footer-list li a {
+    text-decoration: none;
+    color: #e1d4c9;
+}
+.right-footer-list li {
+    line-height: 250%;
+    display: flex;
+    gap: 8px;
+}
+.contact-us-footer-text {
+    height: 20px;
+}
