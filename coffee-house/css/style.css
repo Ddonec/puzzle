@@ -225,7 +225,15 @@ h2 span {
    width: 40px;
    height: 4px;
    border-radius: 100px;
-   background: var(--border-light, #c1b6ad);
+}
+
+.pag-1,
+.pag-2,
+.pag-3 {
+   background: #c1b6ad;
+}
+.pagactive {
+   background: #665f55;
 }
 
 .image-right-arrow,
@@ -363,6 +371,9 @@ h2 span {
    cursor: pointer;
 }
 
+.text-btn-app p {
+   text-align: left;
+}
 .appstore-btn-fs:hover {
    color: #e1d4c9;
    background-color: #665f55;
