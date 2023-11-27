@@ -10,6 +10,21 @@
 
 .head-text-menu-page {
    max-width: 800px;
+   color: var(--text-dark, #403f3d);
+   text-align: center;
+   font-feature-settings: "clig" off, "liga" off;
+
+   /* Desktop/Heading/heading-2 */
+   font-family: Inter;
+   font-size: 60px;
+   font-style: normal;
+   font-weight: 600;
+   line-height: 125%; /* 75px */
+}
+
+.head-text-menu-page span {
+   color: #b0907a;
+   font-style: italic;
 }
 .coffe-tea-cakes-buttons-area {
    display: flex;
@@ -30,6 +45,7 @@
 }
 
 .header-menu-icon-container {
+   cursor: default;
    position: relative;
    text-decoration: none;
 }
@@ -160,6 +176,10 @@
 }
 .active-shop {
    background-color: #665f55;
+   cursor: default;
+}
+.active-shop:hover {
+   cursor: default;
 }
 .active-shop > .circle-area-button-c-t-c {
    background-color: #e1d4c9;
