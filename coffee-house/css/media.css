@@ -34,13 +34,14 @@
     }
 }
 @media (max-width: 769px) {
-    .nav-menu {
+    .nav-menu,
+    .header-menu-icon-container {
         display: none;
     }
 }
 @media (max-width: 700px) {
     body {
-        padding: 0px 16px;
+        padding: 20px 16px;
     }
     footer,
     .first-section {
@@ -104,7 +105,7 @@
         width: calc(100vw - 32px);
     }
     .product-into-slider-container {
-        width: calc((100vw - 32px) * 3);
+        width: calc((100% - 32px) * 3);
     }
     /* media */
 }
