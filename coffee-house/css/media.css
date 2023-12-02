@@ -106,4 +106,5 @@
     .product-into-slider-container {
         width: calc((100vw - 32px) * 3);
     }
+    /* media */
 }
