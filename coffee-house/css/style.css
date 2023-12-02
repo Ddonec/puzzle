@@ -89,7 +89,7 @@ body {
     width: calc(100% - 200px);
     border-radius: 40px;
     padding: 100px;
-    background-position: center ;
+    background-position: center;
 
     color: var(--text-light, #e1d4c9);
 }
@@ -211,19 +211,20 @@ h2 span {
 .product-into-slider-container {
     transition: all 0.6s;
     transform: translateX(0px);
-    width: calc((100vw - 290px) * 3);
+    width: calc((100vw - 284px) * 3);
     max-width: 3456px;
     display: flex;
     overflow: hidden;
 }
 
 .slider-visible-area {
-    width: calc(100vw - 290px);
+    width: calc(100vw - 284px);
     overflow: hidden;
+    max-width: 1150px;
 }
 
 .product-slider-container {
-    width: calc(100vw - 290px);
+    width: calc(100vw - 284px);
     max-width: 1152px;
     display: grid;
     align-items: center;
