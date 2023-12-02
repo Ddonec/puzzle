@@ -1,0 +1,109 @@
+@media (max-width: 1000px) {
+    footer {
+        flex-direction: column;
+        gap: 100px;
+    }
+    .four-container {
+        flex-direction: column;
+        gap: 100px;
+        align-items: center;
+    }
+    .flex-kostil-fs div:nth-child(2),
+    .flex-kostil-fs div:nth-child(3) {
+        display: none;
+    }
+    .flex-kostil-fs {
+        height: unset;
+    }
+    .i-n-t-c {
+        width: 100%;
+    }
+    .image-in-third-container-1,
+    .image-in-third-container-4 {
+        max-width: unset;
+    }
+    .cards-of-product div:nth-child(n + 5),
+    .cakes-product div:nth-child(n + 5) {
+        display: none;
+    }
+}
+
+@media (min-width: 1001px) {
+    .round-container {
+        display: none;
+    }
+}
+@media (max-width: 769px) {
+    .nav-menu {
+        display: none;
+    }
+}
+@media (max-width: 700px) {
+    body {
+        padding: 0px 16px;
+    }
+    footer,
+    .first-section {
+        padding: 60px 16px;
+        gap: 40px;
+        width: unset;
+    }
+    h2 {
+        font-size: 32px;
+    }
+    .h1 {
+        font-size: 42px;
+    }
+    .head-text-menu-page {
+        font-size: 33px;
+    }
+    .small-text-fs {
+        font-size: 16px;
+    }
+    .text-and-button-in-first-section {
+        width: unset;
+    }
+    .left-arrow,
+    .right-arrow {
+        display: none;
+    }
+    .product-slider-container,
+    .slider-visible-area {
+        width: 100%;
+    }
+    .buttons-mobile-app-container {
+        flex-direction: column;
+    }
+    .left-fs {
+        width: 100%;
+    }
+    .right-fs {
+        aspect-ratio: 1;
+        height: unset;
+        width: 100%;
+        background-position: center;
+        background-size: contain;
+    }
+    .i-n-t-c {
+        aspect-ratio: 348/590;
+        background-size: cover;
+    }
+    .h2-footer {
+        font-size: 32px;
+    }
+    .coffe-tea-cakes-buttons-area {
+        gap: 8px;
+    }
+
+    /* slider */
+    .product-slider-container,
+    .slider-visible-area,
+    .discriptoons-product-ss,
+    .product-slider-container,
+    .product-slider-container img {
+        width: calc(100vw - 32px);
+    }
+    .product-into-slider-container {
+        width: calc((100vw - 32px) * 3);
+    }
+}
