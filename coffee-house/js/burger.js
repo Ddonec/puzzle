@@ -1,6 +1,7 @@
 const burgerBtn = document.querySelector(".burger-button");
 const burgerMenu = document.querySelector(".burger-menu");
 const links = document.querySelectorAll(".burger-menu li a");
+const body = document.querySelector("body");
 
 let burgerStatus = false;
 
@@ -20,15 +21,19 @@ function toggleBurgerMenu() {
     if (!burgerStatus) {
         burgerBtn.classList.add("burger-button-active");
         burgerMenu.style.transform = "translateX(-16px)";
+        body.classList.add("overflow-h");
     } else {
         burgerBtn.classList.remove("burger-button-active");
         burgerMenu.style.transform = "translateX(100vw)";
+        body.classList.remove("overflow-h");
     }
 
     burgerStatus = !burgerStatus;
 }
 
 function closeBurgerMenu() {
+    body.classList.remove("overflow-h");
+
     burgerBtn.classList.remove("burger-button-active");
     burgerMenu.style.transform = "translateX(100vw)";
     burgerStatus = false;

@@ -1,3 +1,9 @@
+@media (max-width: 1500px){
+    .h2-four{
+        width:600px ;
+    }
+}
+
 @media (max-width: 1000px) {
     footer {
         flex-direction: column;
@@ -33,10 +39,44 @@
         display: none;
     }
 }
+
 @media (max-width: 769px) {
     .nav-menu,
     .header-menu-icon-container {
         display: none;
+    }
+    .button-menu-fs > .cup-of-coffe-logo-btn {
+        width: 20px;
+    }
+    .button-menu-fs {
+        gap: 8px;
+    }
+    .first-section {
+        padding: 100px 60px;
+        width: auto;
+    }
+    .image-in-third-container-1,
+    .image-in-third-container-4 {
+        aspect-ratio: 688/590;
+    }
+    .left-fs {
+        width: auto;
+    }
+    footer {
+        padding: 100px 60px;
+    }
+    .head-text-menu-page {
+        font-family: Inter, sans-serif;
+        font-size: 60px;
+        font-style: normal;
+        letter-spacing: 0.9px;
+        line-height: 125%;
+    }
+    .shop-section {
+        margin-top: 14px;
+    }
+    .h2-four {
+        letter-spacing: 0.6px;
     }
 }
 @media (max-width: 700px) {
@@ -108,4 +148,15 @@
         width: calc((100% - 32px) * 3);
     }
     /* media */
+
+    .h1 {
+        line-height: 114%; /* 48.3px */
+    }
+    .four-container {
+        gap: 40px;
+    }
+    .head-text-menu-page {
+        line-height: 120%;
+        letter-spacing: 0.1px;
+    }
 }
