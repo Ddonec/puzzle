@@ -167,9 +167,7 @@ body {
     flex-wrap: wrap;
     justify-content: center;
 }
-.none {
-    display: none;
-}
+
 
 .coffe-btn-menu:hover > .circle-area-button-c-t-c {
     color: #e1d4c9;
