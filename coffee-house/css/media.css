@@ -41,6 +41,9 @@
 }
 
 @media (max-width: 769px) {
+    .burger-button{
+        display: flex;
+    }
     .nav-menu,
     .header-menu-icon-container {
         display: none;
@@ -159,4 +162,5 @@
         line-height: 120%;
         letter-spacing: 0.1px;
     }
+
 }
