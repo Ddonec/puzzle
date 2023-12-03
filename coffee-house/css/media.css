@@ -109,3 +109,20 @@
     }
     /* media */
 }
+
+@media only screen and (max-width: 767px) {
+    body {
+        overflow-x: hidden; /* Запрет прокрутки по горизонтали */
+    }
+
+
+
+    .burger-button {
+        display: flex; /* Отображение кнопки бургер-меню на мобильных устройствах */
+    }
+
+    header {
+        overflow: hidden; /* Запрет обрезания бургер-меню на мобильных устройствах */
+    }
+
+}
