@@ -683,6 +683,9 @@ footer {
     align-items: center;
     gap: 6px;
 }
+.burger-button:hover {
+    cursor: pointer;
+}
 
 .burger-button span {
     width: 16px;

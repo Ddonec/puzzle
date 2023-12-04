@@ -1,6 +1,7 @@
 const burgerBtn = document.querySelector(".burger-button");
 const burgerMenu = document.querySelector(".burger-menu");
 const links = document.querySelectorAll(".burger-menu li a");
+const menuLink = document.querySelector(".menu-underline a");
 const body = document.querySelector("body");
 
 let burgerStatus = false;
@@ -15,6 +16,9 @@ links.forEach((link) => {
     link.addEventListener("click", function () {
         closeBurgerMenu();
     });
+});
+menuLink.addEventListener("click", function () {
+    closeBurgerMenu();
 });
 
 function toggleBurgerMenu() {

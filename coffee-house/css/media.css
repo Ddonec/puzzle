@@ -1,3 +1,11 @@
+@media (min-width: 3000px) {
+    .coffe-products-container {
+        gap: unset;
+        row-gap: 40px;
+        justify-content: space-between;
+    }
+}
+
 @media (max-width: 1500px) {
     .h2-four {
         width: 600px;
@@ -162,5 +170,115 @@
     .head-text-menu-page {
         line-height: 120%;
         letter-spacing: 0.1px;
+    }
+}
+
+/* honer unset? */
+@media (pointer: coarse) {
+    .right-arrow:hover {
+        background: unset;
+    }
+    .right-arrow:hover > .round-arrow-container > .image-right-arrow img {
+        display: block;
+    }
+    .right-arrow:hover > .round-arrow-container > .image-right-arrow {
+        background-image: url(assets/icons/arrow-right.svg);
+    }
+
+    .left-arrow:hover {
+        background: unset;
+    }
+    .left-arrow:hover > .round-arrow-container > .image-right-arrow img {
+        display: none;
+    }
+    .left-arrow:hover > .round-arrow-container > .image-left-arrow {
+        background-image: url(../assets/icons/arrow-left.svg);
+    }
+
+    .button-menu-fs > .cup-of-coffe-logo-btn {
+        width: 20px;
+    }
+    .button-menu-fs {
+        gap: 8px;
+    }
+    .i-n-t-c {
+        background-size: 100%;
+    }
+
+    .appstore-btn-fs:hover {
+        color: #665f55;
+        background-color: #e1d4c9;
+    }
+    .appstore-btn-fs:hover > .image-app-logo img {
+        display: block;
+    }
+    .image-app-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .appstore-btn-fs:hover > .text-btn-app > .avalible-app-text {
+        color: #403f3d;
+    }
+    .appstore-btn-fs:hover > .text-btn-app > .appstore-app-text {
+        color: #403f3d;
+    }
+
+    .androidstore-btn-fs:hover {
+        color: #665f55;
+        background-color: #e1d4c9;
+    }
+    .androidstore-btn-fs:hover > .image-app-logo img {
+        display: block;
+    }
+    .image-app-logo {
+        width: 36px;
+        height: 36px;
+    }
+
+    .androidstore-btn-fs:hover > .text-btn-app > .avalible-app-text {
+        color: #403f3d;
+    }
+    .androidstore-btn-fs:hover > .text-btn-app > .appstore-app-text {
+        color: #403f3d;
+    }
+
+    .underline-footer:hover::before {
+        transform: scaleX(0);
+    }
+
+    .twitter-icon:hover {
+        background: unset;
+    }
+    .twitter-icon:hover div img {
+        display: block;
+    }
+
+    .instagram-icon:hover {
+        background: unset;
+    }
+    .instagram-icon:hover div img {
+        display: block;
+    }
+
+    .test {
+        width: 25px;
+        height: 25px;
+    }
+    .facebook-icon:hover {
+        background: unset;
+    }
+    .facebook-icon:hover div img {
+        display: block;
+    }
+
+    .underline:hover::before {
+        transform: scaleX(0);
+    }
+
+    /* menu  */
+
+    .image-zone-product img {
+        scale: 1;
     }
 }
