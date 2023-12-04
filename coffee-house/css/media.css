@@ -202,7 +202,7 @@
         gap: 8px;
     }
     .i-n-t-c {
-        background-size: 100%;
+        background-size: cover;
     }
 
     .appstore-btn-fs:hover {
