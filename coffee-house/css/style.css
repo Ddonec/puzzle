@@ -519,7 +519,7 @@ footer {
     background: var(--background-container, #665f55);
     padding: 100px;
     display: flex;
-    justify-content: space-between;
+    gap: 100px;
 }
 
 .h2-footer {

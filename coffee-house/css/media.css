@@ -16,6 +16,7 @@
     footer {
         flex-direction: column;
         gap: 100px;
+        justify-content: space-between;
     }
     .four-container {
         flex-direction: column;
