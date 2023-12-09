@@ -158,7 +158,7 @@
         width: calc(100vw - 32px);
     }
     .product-into-slider-container {
-        width: calc((100% - 32px) * 3);
+        width: calc((100%) * 3);
     }
     /* media */
 

@@ -2,6 +2,7 @@ const leftArrow = document.querySelector(".left-arrow");
 const rightArrow = document.querySelector(".right-arrow");
 const sliderCont = document.querySelector(".product-into-slider-container");
 const sliderWidthContainer = document.querySelector(".product-slider-container");
+const activeBar = document.querySelector(".pagactive::before");
 
 const pag1 = document.querySelector(".pag-1");
 const pag2 = document.querySelector(".pag-2");
@@ -12,13 +13,19 @@ let count = 1;
 
 window.addEventListener("resize", function () {
     widthSlider = sliderWidthContainer.clientWidth;
+});
+window.addEventListener("resize", function () {
+    widthSlider = sliderWidthContainer.clientWidth;
     count = 1;
     sliderCont.style.transform = "translateX(0px)";
     pag1Active();
 });
 leftArrow.addEventListener("click", function () {
     if (count == 1) {
-        sliderCont.style.transform = "translateX(0px)";
+        let widthSlider2 = widthSlider * 2;
+        sliderCont.style.transform = "translateX(-" + widthSlider2 + "px)";
+        count = 3;
+        pag3Active();
     } else if (count == 2) {
         sliderCont.style.transform = "translateX(0px)";
         count -= 1;
@@ -43,8 +50,9 @@ rightArrow.addEventListener("click", function () {
         count += 1;
         pag3Active();
     } else if (count == 3) {
-        let widthSlider2 = widthSlider * 2;
-        sliderCont.style.transform = "translateX(-" + widthSlider2 + "px)";
+        sliderCont.style.transform = "translateX(0px)";
+        count = 1;
+        pag1Active();
     }
 
     console.log(widthSlider);
@@ -59,6 +67,7 @@ function pag2Active() {
     pag1.classList.remove("pagactive");
     pag2.classList.add("pagactive");
     pag3.classList.remove("pagactive");
+    activeBar.style.width = "100%";
 }
 function pag3Active() {
     pag1.classList.remove("pagactive");
