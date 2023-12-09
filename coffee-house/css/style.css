@@ -712,6 +712,7 @@ footer {
     transition: 0.6s ease;
     transform: translateX(100vw);
     z-index: 1;
+    height: 100vh;
 
     color: var(--text-dark, #403f3d);
     text-align: center;
@@ -741,14 +742,16 @@ footer {
     width: 40px;
     font-weight: 100;
 }
-
+.menu-underline {
+    position: relative;
+}
 .menu-underline::before {
     content: "";
     position: absolute;
     display: block;
     height: 2px;
-    width: 113.5px;
-    bottom: 280px;
+    width: 100%;
+    top: 40px;
     background-color: #403f3d;
     transform: scaleX(1);
     transition: transform 0.6s ease;

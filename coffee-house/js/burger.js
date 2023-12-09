@@ -1,7 +1,7 @@
 const burgerBtn = document.querySelector(".burger-button");
 const burgerMenu = document.querySelector(".burger-menu");
 const links = document.querySelectorAll(".burger-menu li a");
-const menuLink = document.querySelector(".menu-underline a");
+const menuLink = document.querySelector(".menu-underline");
 const body = document.querySelector("body");
 
 let burgerStatus = false;
@@ -19,6 +19,12 @@ links.forEach((link) => {
 });
 menuLink.addEventListener("click", function () {
     closeBurgerMenu();
+});
+
+window.addEventListener("resize", function () {
+    if (window.innerWidth > 768) {
+        closeBurgerMenu();
+    }
 });
 
 function toggleBurgerMenu() {
