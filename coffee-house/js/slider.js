@@ -1,23 +1,51 @@
 const leftArrow = document.querySelector(".left-arrow");
 const rightArrow = document.querySelector(".right-arrow");
-const cliderContainer = document.querySelector(".product-into-slider-container");
-const cliderInfoContainer = document.querySelector(".product-slider-container");
-const pagActive = document.querySelector(".pagination-indicator-ss > .pagactive > div");
+const sliderCont = document.querySelector(".product-into-slider-container");
+const sliderWidthContainer = document.querySelector(".product-slider-container");
 
 const pag1 = document.querySelector(".pag-1");
 const pag2 = document.querySelector(".pag-2");
 const pag3 = document.querySelector(".pag-3");
 
-let widthSlider = cliderInfoContainer.clientWidth;
+let widthSlider = sliderWidthContainer.clientWidth;
 let count = 1;
 let isPaused = false;
-let timer = 0;
+let secundomer = 0;
 let interval;
+let touchStartPozition; 
+
+sliderCont.addEventListener("touchstart", function (event) {
+    touchStartPozition = event.touches[0].clientX;
+    isPaused = true;
+});
+
+sliderCont.addEventListener("touchend", function (event) {
+    if (touchStartPozition !== undefined) {
+        const touchEndX = event.changedTouches[0].clientX;
+        const deltaX = touchEndX - touchStartPozition;
+
+        if (deltaX > 0) {
+            console.log("свайп вправо");
+            pagProgressBarReset();
+            resetInterval();
+            switchSlide("left");
+        } else if (deltaX < 0) {
+            console.log("свайп влево");
+            pagProgressBarReset();
+            resetInterval();
+            switchSlide("right");
+        } else {
+            console.log("нет свайпа");
+        }
+        isPaused = false;
+        touchStartPozition = undefined;
+    }
+});
 
 function switchSlide(direction) {
     if (interval) {
         clearInterval(interval);
-        timer = 0;
+        secundomer = 0;
     }
 
     if (direction === "left") {
@@ -31,7 +59,7 @@ function switchSlide(direction) {
 }
 
 function updateSlider() {
-    cliderContainer.style.transform = "translateX(-" + widthSlider * (count - 1) + "px)";
+    sliderCont.style.transform = "translateX(-" + widthSlider * (count - 1) + "px)";
     updatePagination();
 }
 
@@ -46,11 +74,14 @@ function updatePagination() {
 }
 
 function resetInterval() {
+    secundomer = 0;
+    clearInterval(interval);
     interval = setInterval(function () {
         if (!isPaused) {
-            timer += 100;
+            secundomer += 100;
             updatePagActiveWidth();
-            if (timer >= 6000) {
+            if (secundomer >= 6000) {
+                secundomer = 0;
                 switchSlide("right");
             }
         }
@@ -59,27 +90,31 @@ function resetInterval() {
 
 resetInterval();
 
-cliderContainer.addEventListener("mouseover", function () {
-    isPaused = true;
-    console.log(timer);
+sliderCont.addEventListener("mouseover", function (event) {
+    if (event.type !== "touchend") {
+        isPaused = true;
+    }
 });
 
-cliderContainer.addEventListener("mouseout", function () {
-    isPaused = false;
-    console.log(timer);
+sliderCont.addEventListener("mouseout", function (event) {
+    if (event.type !== "touchend") {
+        isPaused = false;
+    }
 });
 
 window.addEventListener("resize", function () {
-    widthSlider = cliderInfoContainer.clientWidth;
+    widthSlider = sliderWidthContainer.clientWidth;
     updateSlider();
     updatePagActiveWidth();
 });
 
 leftArrow.addEventListener("click", function () {
+    pagProgressBarReset();
     switchSlide("left");
 });
 
 rightArrow.addEventListener("click", function () {
+    pagProgressBarReset();
     switchSlide("right");
 });
 
@@ -102,9 +137,18 @@ function pag3Active() {
 }
 
 function updatePagActiveWidth() {
+    const pagActive = document.querySelector(".pagination-indicator-ss > .pagactive > div");
     if (pagActive) {
         const maxAnimationTime = 6000;
-        const widthPercentage = (timer / maxAnimationTime) * 100;
-        pagActive.style.width = `${widthPercentage}%`;
+        const widthPercentage = (secundomer / maxAnimationTime) * 100;
+        if (widthPercentage >= 99) {
+            pagProgressBarReset();
+        } else {
+            pagActive.style.width = `${widthPercentage}%`;
+        }
     }
+}
+function pagProgressBarReset() {
+    const pagActive = document.querySelector(".pagination-indicator-ss > .pagactive > div");
+    pagActive.style.width = "0%";
 }
