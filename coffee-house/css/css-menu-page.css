@@ -221,7 +221,7 @@ body {
     margin: 0 auto;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 .grey-bg {
     width: 100vw;
@@ -279,6 +279,7 @@ body {
 .size-value-modal-btns-cont {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
 }
 .size-value-btn {
     border-radius: 100px;
@@ -382,5 +383,3 @@ body {
 .none {
     display: none;
 }
-
-
