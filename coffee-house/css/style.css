@@ -91,15 +91,26 @@ body {
     align-items: top;
 }
 .first-section {
+    position: relative;
     margin-top: 15px;
 
-    background-image: url(../assets/images/coffe-bg-fs.jpeg);
+    /* background-image: url(../assets/images/coffe-bg-fs.jpeg); */
     width: calc(100% - 200px);
     border-radius: 40px;
     padding: 100px;
     background-position: center;
 
     color: var(--text-light, #e1d4c9);
+    overflow: hidden;
+}
+.video-BG {
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: -10;
 }
 
 .text-and-button-in-first-section {
