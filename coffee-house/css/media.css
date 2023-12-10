@@ -37,10 +37,6 @@
     .image-in-third-container-4 {
         max-width: unset;
     }
-    .cards-of-product div:nth-child(n + 5),
-    .cakes-product div:nth-child(n + 5) {
-        display: none;
-    }
 }
 
 @media (min-width: 1001px) {
@@ -49,7 +45,18 @@
     }
 }
 
-@media (max-width: 769px) {
+@media (max-width: 768px) {
+    .coffe-products-container,
+    .cakes-product {
+        max-height: 1052px;
+    }
+    .cards-of-product div:nth-child(n + 5),
+    .cakes-product div:nth-child(n + 5) {
+        /* display: none; */
+        opacity: 0;
+        transition: opacity 1.2s ease-in-out;
+    }
+
     .burger-button {
         display: flex;
     }
@@ -160,7 +167,6 @@
     .product-into-slider-container {
         width: calc((100%) * 3);
     }
-    /* media */
 
     .h1 {
         line-height: 114%; /* 48.3px */
@@ -171,6 +177,13 @@
     .head-text-menu-page {
         line-height: 120%;
         letter-spacing: 0.1px;
+    }
+}
+
+@media (max-width: 691px) {
+    .coffe-products-container,
+    .cakes-product {
+        max-height: 2144px;
     }
 }
 

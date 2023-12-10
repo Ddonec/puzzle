@@ -92,14 +92,18 @@ body {
     flex-direction: column;
     gap: 40px;
     align-items: center;
+    overflow: hidden;
 }
 
-.coffe-products-container {
+.coffe-products-container,
+.cakes-product {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     transition: 0.6s ease;
     justify-content: center;
+    transition: max-height 1.2s ease-in-out;
+    overflow: hidden;
 }
 
 .cake-products-container {
@@ -160,14 +164,12 @@ body {
     font-weight: 400;
     line-height: 150%; /* 24px */
 }
-.products-tea,
-.cakes-product {
+.products-tea {
     display: flex;
     gap: 40px;
     flex-wrap: wrap;
     justify-content: center;
 }
-
 
 .coffe-btn-menu:hover > .circle-area-button-c-t-c {
     color: #e1d4c9;
@@ -363,4 +365,23 @@ body {
 
 .none {
     display: none;
+}
+
+.products-container {
+    max-height: 500px; /* Некий начальный максимальный размер */
+    overflow: hidden;
+    transition: max-height 0.5s ease-in-out;
+}
+
+.product {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.product.visible {
+    opacity: 1;
+}
+.products-container > div {
+    padding: 50px;
+    border: solid;
 }
