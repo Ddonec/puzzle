@@ -93,8 +93,6 @@ body {
 .first-section {
     position: relative;
     margin-top: 15px;
-
-    /* background-image: url(../assets/images/coffe-bg-fs.jpeg); */
     width: calc(100% - 200px);
     border-radius: 40px;
     padding: 100px;
