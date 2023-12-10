@@ -210,12 +210,28 @@ body {
 }
 
 .modal-coffe {
+    position: fixed;
     display: flex;
     background-color: #e1d4c9;
     width: max-content;
     padding: 16px;
     border-radius: 40px;
     gap: 20px;
+    z-index: 20;
+    margin: 0 auto;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.grey-bg {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #403f3d;
+    z-index: 10;
+    opacity: 0.5;
 }
 .left-area-modal {
     width: 310px;
