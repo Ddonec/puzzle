@@ -40,9 +40,9 @@
 }
 
 @media (min-width: 1001px) {
-    .round-container {
+    /* .round-container {
         display: none;
-    }
+    } */
 }
 @media (max-width: 850px) {
     .right-area-modal {
@@ -61,6 +61,9 @@
     .coffe-products-container,
     .cakes-product {
         max-height: 1052px;
+    }
+    .round-container {
+        display: flex;
     }
     .cards-of-product div:nth-child(n + 5),
     .cakes-product div:nth-child(n + 5) {
