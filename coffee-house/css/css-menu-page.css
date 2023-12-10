@@ -383,21 +383,4 @@ body {
     display: none;
 }
 
-.products-container {
-    max-height: 500px; /* Некий начальный максимальный размер */
-    overflow: hidden;
-    transition: max-height 0.5s ease-in-out;
-}
 
-.product {
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-}
-
-.product.visible {
-    opacity: 1;
-}
-.products-container > div {
-    padding: 50px;
-    border: solid;
-}
