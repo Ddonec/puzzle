@@ -18,7 +18,7 @@ const dv3 = document.querySelector(".d-v-3");
 const closeModalElementsArr = [greyBG, closeBtnModal];
 const sizeButtons = [sv1, sv2, sv3];
 
-function  priceLlifeUpdate(clickedButton) {
+function priceLlifeUpdate(clickedButton) {
     sizeButtons.forEach((button) => {
         button.classList.remove("size-value-btn-active");
     });
@@ -119,13 +119,12 @@ function openModal(image, title, description, price, cat) {
     console.log(actualValue);
 }
 
-
 function setActive(element, elements) {
     elements.forEach((e) => e.classList.remove("size-value-btn-active"));
     element.classList.add("size-value-btn-active");
 }
 
-function  priceLlifeUpdate(clickedButton) {
+function priceLlifeUpdate(clickedButton) {
     sizeButtons.forEach((button) => {
         button.classList.remove("size-value-btn-active");
     });
@@ -159,17 +158,17 @@ function  priceLlifeUpdate(clickedButton) {
 
 sv1.addEventListener("click", () => {
     setActive(sv1, [sv2, sv3]);
-     priceLlifeUpdate(sv1);
+    priceLlifeUpdate(sv1);
 });
 
 sv2.addEventListener("click", () => {
     setActive(sv2, [sv1, sv3]);
-     priceLlifeUpdate(sv2);
+    priceLlifeUpdate(sv2);
 });
 
 sv3.addEventListener("click", () => {
     setActive(sv3, [sv1, sv2]);
-     priceLlifeUpdate(sv3);
+    priceLlifeUpdate(sv3);
 });
 
 function toggleActiveClass(element) {
@@ -187,7 +186,11 @@ dv2.addEventListener("click", () => toggleActiveClass(dv2));
 dv3.addEventListener("click", () => toggleActiveClass(dv3));
 
 modalWindow.addEventListener("click", function () {
-    priceModal.textContent = actualValue;
+    if (Number.isInteger(actualValue)) {
+        priceModal.textContent = "$" + actualValue + ".00";
+    } else {
+        priceModal.textContent = "$" + actualValue + "0";
+    }
     console.log(actualValue);
 });
 
