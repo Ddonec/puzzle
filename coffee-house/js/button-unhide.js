@@ -49,6 +49,8 @@ window.addEventListener("resize", function () {
 });
 
 document.querySelector(".coffe-tea-cakes-buttons-area").addEventListener("click", function () {
-    hideCakes();
-    hideCoffee();
+    if (window.innerWidth <= 768) {
+        hideCakes();
+        hideCoffee();
+    }
 });

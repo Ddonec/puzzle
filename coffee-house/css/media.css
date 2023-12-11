@@ -114,10 +114,15 @@
         width: auto;
     }
 }
-@media (max-width: 700px) {
+@media (max-width: 650px) {
     body {
         padding: 20px 16px;
     }
+}
+@media (max-width: 700px) {
+    /* body {
+        padding: 20px 16px;
+    } */
     footer,
     .first-section {
         padding: 60px 16px;
@@ -195,7 +200,7 @@
     }
 }
 
-@media (max-width: 691px) {
+@media (max-width: 739px) {
     .coffe-products-container,
     .cakes-product {
         max-height: 2144px;
@@ -312,5 +317,97 @@
 
     .image-zone-product img {
         scale: 1;
+    }
+    .close-btn-modal:hover {
+        background-color: #e1d4c9;
+        color: #e1d4c9;
+    }
+    /* .size-value-btn:hover {
+        background-color: unset;
+        cursor: pointer;
+        border: 1px solid unset;
+    }
+    .size-value-btn:hover > p {
+        color: unset;
+    }
+
+    .size-value-btn:hover > div {
+        background-color: unset;
+    }
+
+    .size-value-btn {
+        border: 1px solid var unset;
+    }
+    .size-value-btn div {
+        background: #c1b6ad;
+    }
+    .size-value-btn p {
+        transition: 0.6s ease;
+    }
+
+    .close-btn-modal:hover {
+        background-color: unset;
+        color: unset;
+    }
+    .size-value-btn-active {
+        background: #665f55;
+        cursor: pointer;
+        border: 1px solid #665f55;
+    }
+    .size-value-btn-active > p {
+        color: #e1d4c9;
+    }
+
+    .size-value-btn-active > div {
+        background: #e1d4c9;
+    } */
+    .size-value-btn:hover {
+        border: 1px solid #c1b6ad;
+    }
+    .size-value-btn div {
+        background: #c1b6ad;
+    }
+}
+
+.size-value-btn:hover:not(.size-value-btn-active) {
+    background-color: #665f55;
+    cursor: pointer;
+    /* border: 1px solid #665f55; */
+}
+
+.size-value-btn:hover:not(.size-value-btn-active) > p {
+    color: #e1d4c9;
+}
+
+.size-value-btn:hover:not(.size-value-btn-active) > div {
+    background-color: #c1b6ad;
+}
+
+.size-value-btn-active {
+    background: #665f55;
+    cursor: pointer;
+    border: 1px solid #c1b6ad;
+}
+
+.size-value-btn-active > p {
+    color: #e1d4c9;
+}
+
+.size-value-btn-active > div {
+    background: #e1d4c9;
+}
+
+@media (hover: none) {
+    .size-value-btn:hover:not(.size-value-btn-active),
+    .size-value-btn:hover:not(.size-value-btn-active) > p {
+        background-color: transparent;
+        cursor: default;
+        /* border: 1px solid #c1b6ad; */
+        color: initial;
+    }
+    .size-value-btn:hover:not(.size-value-btn-active) > div {
+        cursor: default;
+        /* border: 1px solid #c1b6ad; */
+        color: initial;
     }
 }
