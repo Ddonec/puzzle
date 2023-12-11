@@ -200,6 +200,9 @@
     .cakes-product {
         max-height: 2144px;
     }
+    .first-section {
+        border-radius: 40px;
+    }
 }
 
 /* honer unset? */
