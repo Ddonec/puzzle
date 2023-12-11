@@ -324,6 +324,17 @@ body {
     background-color: #e1d4c9;
 }
 
+.size-value-btn-active {
+    background-color: #665f55;
+    border: 1px solid #665f55;
+}
+.size-value-btn-active > p {
+    color: #e1d4c9;
+}
+.size-value-btn-active > div {
+    background-color: #e1d4c9;
+}
+
 .total-modal {
     display: flex;
     justify-content: space-between;
