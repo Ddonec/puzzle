@@ -3,6 +3,10 @@ const greyBG = document.querySelector(".grey-bg");
 const modalWindow = document.querySelector(".modal-coffe");
 const productCart = document.querySelector(".product-cart");
 const products = document.querySelectorAll(".product-cart");
+const priceModal = document.getElementById("modal-price");
+
+let priceModalReal = priceModal.textContent;
+let actualValue = 0;
 
 const sv1 = document.querySelector(".s-v-1");
 const sv2 = document.querySelector(".s-v-2");
@@ -12,6 +16,15 @@ const dv2 = document.querySelector(".d-v-2");
 const dv3 = document.querySelector(".d-v-3");
 
 const closeModalElementsArr = [greyBG, closeBtnModal];
+const sizeButtons = [sv1, sv2, sv3];
+
+function  priceLlifeUpdate(clickedButton) {
+    sizeButtons.forEach((button) => {
+        button.classList.remove("size-value-btn-active");
+    });
+
+    clickedButton.classList.add("size-value-btn-active");
+}
 
 closeModalElementsArr.forEach(function (element) {
     element.addEventListener("click", function () {
@@ -95,24 +108,154 @@ function openModal(image, title, description, price, cat) {
     modalDescription.textContent = description;
     modalPrice.textContent = price;
 
+    priceModalReal = price;
+    actualValue = Number.parseFloat(modalPrice.textContent.slice(1));
+
     // console.log(image);
     // console.log(title);
     // console.log(description);
     // console.log(price);
     // console.log(cat);
+    console.log(actualValue);
 }
+
 
 function setActive(element, elements) {
     elements.forEach((e) => e.classList.remove("size-value-btn-active"));
     element.classList.add("size-value-btn-active");
 }
-sv1.addEventListener("click", () => setActive(sv1, [sv2, sv3]));
-sv2.addEventListener("click", () => setActive(sv2, [sv1, sv3]));
-sv3.addEventListener("click", () => setActive(sv3, [sv1, sv2]));
 
-dv1.addEventListener("click", () => dv1.classList.toggle("size-value-btn-active"));
-dv2.addEventListener("click", () => dv2.classList.toggle("size-value-btn-active"));
-dv3.addEventListener("click", () => dv3.classList.toggle("size-value-btn-active"));
+function  priceLlifeUpdate(clickedButton) {
+    sizeButtons.forEach((button) => {
+        button.classList.remove("size-value-btn-active");
+    });
 
+    clickedButton.classList.add("size-value-btn-active");
 
+    let basePrice = Number.parseFloat(priceModalReal.slice(1));
 
+    // Учтем размер
+    if (clickedButton === sv1) {
+        actualValue = basePrice;
+    } else if (clickedButton === sv2) {
+        actualValue = basePrice + 0.5;
+    } else if (clickedButton === sv3) {
+        actualValue = basePrice + 1;
+    }
+
+    // Учтем добавки
+    if (dv1.classList.contains("size-value-btn-active")) {
+        actualValue += 0.5; // Предполагаемая цена за добавку
+    }
+
+    if (dv2.classList.contains("size-value-btn-active")) {
+        actualValue += 0.5; // Предполагаемая цена за добавку
+    }
+
+    if (dv3.classList.contains("size-value-btn-active")) {
+        actualValue += 0.5; // Предполагаемая цена за добавку
+    }
+}
+
+sv1.addEventListener("click", () => {
+    setActive(sv1, [sv2, sv3]);
+     priceLlifeUpdate(sv1);
+});
+
+sv2.addEventListener("click", () => {
+    setActive(sv2, [sv1, sv3]);
+     priceLlifeUpdate(sv2);
+});
+
+sv3.addEventListener("click", () => {
+    setActive(sv3, [sv1, sv2]);
+     priceLlifeUpdate(sv3);
+});
+
+function toggleActiveClass(element) {
+    if (element.classList.contains("size-value-btn-active")) {
+        element.classList.remove("size-value-btn-active");
+        actualValue -= 0.5;
+    } else {
+        element.classList.add("size-value-btn-active");
+        actualValue += 0.5;
+    }
+}
+
+dv1.addEventListener("click", () => toggleActiveClass(dv1));
+dv2.addEventListener("click", () => toggleActiveClass(dv2));
+dv3.addEventListener("click", () => toggleActiveClass(dv3));
+
+modalWindow.addEventListener("click", function () {
+    priceModal.textContent = actualValue;
+    console.log(actualValue);
+});
+
+// if (dv1.classList.contains("size-value-btn-active")) {
+//     if (Number.isInteger(actualValue)) {
+//         priceModal.textContent = "$" + actualValue + ".00";
+//     } else {
+//         priceModal.textContent = "$" + actualValue + "0";
+//     }
+// }
+// if (dv2.classList.contains("size-value-btn-active")) {
+// }
+// if (dv3.classList.contains("size-value-btn-active")) {
+// }
+// if (dv1.classList.contains("size-value-btn-active") && dv2.classList.contains("size-value-btn-active")) {
+//     if (Number.isInteger(Number.parseFloat(priceModalReal.slice(1)))) {
+//         // console.log(priceModalReal);
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1) + ".00";
+
+//         // console.log("четное");
+//     } else {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1) + "0";
+
+//         // console.log("нечетное");
+//         // console.log(Number.parseFloat(priceModalReal.slice(1)) + 1);
+//         // console.log(priceModalReal);
+//     }
+// }
+// if (dv2.classList.contains("size-value-btn-active") && dv3.classList.contains("size-value-btn-active")) {
+//     if (Number.isInteger(Number.parseFloat(priceModalReal.slice(1)))) {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1) + ".00";
+//     } else {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1) + "0";
+//     }
+// }
+// if (dv3.classList.contains("size-value-btn-active") && dv2.classList.contains("size-value-btn-active")) {
+//     if (Number.isInteger(Number.parseFloat(priceModalReal.slice(1)))) {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1) + ".00";
+//     } else {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1) + "0";
+//     }
+// }
+// if (dv3.classList.contains("size-value-btn-active") && dv1.classList.contains("size-value-btn-active")) {
+//     if (Number.isInteger(Number.parseFloat(priceModalReal.slice(1)))) {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1) + ".00";
+//     } else {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1) + "0";
+//     }
+// }
+// if (
+//     dv3.classList.contains("size-value-btn-active") &&
+//     dv2.classList.contains("size-value-btn-active") &&
+//     dv1.classList.contains("size-value-btn-active")
+// ) {
+//     if (Number.isInteger(Number.parseFloat(priceModalReal.slice(1)))) {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1.5) + "0";
+//     } else {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1)) + 1.5) + ".00";
+//     }
+// }
+// if (
+//     !dv3.classList.contains("size-value-btn-active") &&
+//     !dv2.classList.contains("size-value-btn-active") &&
+//     !dv1.classList.contains("size-value-btn-active")
+// ) {
+//     if (Number.isInteger(Number.parseFloat(priceModalReal.slice(1)))) {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1))) + ".00";
+//     } else {
+//         priceModal.textContent = "$" + String(Number.parseFloat(priceModalReal.slice(1))) + "0";
+//     }
+// }
