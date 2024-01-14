@@ -1,0 +1,63 @@
+main {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   height: 100dvh;
+}
+.visual-area {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+
+   font-size: 30px;
+   font-family: Montserrat Alternates, sans-serif;
+   width: 100%;
+
+}
+
+.hangman-visual-box {
+   background-image: url(../assets/content/bg-fill.png);
+   width: 50%;
+   aspect-ratio: 1;
+   background-position: center;
+   background-size: contain;
+
+   position: relative;
+}
+.human-slice {
+   position: absolute;
+}
+
+#head {
+   right: 12%;
+   top: 10%;
+   width: 20%;
+}
+#body{
+    right: 22%;
+    top: 30%;
+    width: 1%;
+}
+#lhand{
+    right: 22%;
+    top: 30%;
+    width: 13%;
+}
+#rhand{
+    right: 10%;
+    top: 30%;
+    width: 13%;
+}
+#lleg{
+    right: 22%;
+    top: 55.5%;
+    width: 13%;
+}
+#rleg{
+    right: 10%;
+    top: 55.5%;
+    width: 13%;
+}
+.none{
+    display: none;
+}
