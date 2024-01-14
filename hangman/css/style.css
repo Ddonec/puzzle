@@ -3,16 +3,25 @@ main {
    align-items: center;
    justify-content: center;
    height: 100dvh;
+   gap: 5%;
+}
+main > section {
+   height: 100%;
+   gap: 3%;
+   justify-content: center;
 }
 .visual-area {
    display: flex;
    flex-direction: column;
    align-items: center;
-
-   font-size: 30px;
+   font-size: calc(0.5vw + 1.5rem);
    font-family: Montserrat Alternates, sans-serif;
    width: 100%;
    max-width: 500px;
+}
+.text-area {
+   display: flex;
+   flex-direction: column;
 }
 
 .hangman-visual-box {
@@ -58,6 +67,23 @@ main {
    top: 55.5%;
    width: 13%;
 }
+.text-area__word {
+   display: flex;
+   justify-content: center;
+   gap: 1%;
+}
+.text-area__word p {
+   font-family: Montserrat Alternates, sans-serif;
+   font-size: 2rem;
+   width: 10%;
+   text-align: center;
+}
 .none {
    display: none;
+}
+
+@media (orientation: portrait) {
+   main {
+      flex-direction: column;
+   }
 }
