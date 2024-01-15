@@ -57,6 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
    let wordArray = word.toUpperCase().split("");
    let hideWordArray = new Array(wordArray.length).fill("_");
    let count = 0;
+   let modalStatus = false;
    console.log(word);
 
    spanElement.classList.add("count-value");
@@ -86,6 +87,7 @@ document.addEventListener("DOMContentLoaded", function () {
       countContainer.appendChild(spanElement);
 
       console.log(word);
+      console.log(words);
    }
 
    function pageClean() {
@@ -136,36 +138,38 @@ document.addEventListener("DOMContentLoaded", function () {
       const keyContainers = document.querySelectorAll(".key-container");
 
       let status = false;
+      if (!modalStatus) {
+         keyContainers.forEach((keyContainer) => {
+            if (keyContainer.textContent === letter && !keyContainer.classList.contains("disabled")) {
+               for (let i = 0; i < wordArray.length; i++) {
+                  if (wordArray[i] === letter) {
+                     hideWordArray[i] = wordArray[i];
+                     console.log(hideWordArray);
 
-      keyContainers.forEach((keyContainer) => {
-         if (keyContainer.textContent === letter && !keyContainer.classList.contains("disabled")) {
-            for (let i = 0; i < wordArray.length; i++) {
-               if (wordArray[i] === letter) {
-                  hideWordArray[i] = wordArray[i];
-                  console.log(hideWordArray);
-                  renderWordContainer(hideWordArray, wordContainer);
+                     renderWordContainer(hideWordArray, wordContainer);
+                  }
+                  if (hideWordArray.every((value, index) => value === wordArray[index])) {
+                     setTimeout(() => {
+                        gameWinner();
+                     }, 100);
+                  }
+                  if (wordArray[i] === letter) {
+                     status = true;
+                  }
                }
-               if (hideWordArray.every((value, index) => value === wordArray[index])) {
-                  setTimeout(() => {
-                     gameWinner();
-                  }, 100);
-               }
-               if (wordArray[i] === letter) {
-                  status = true;
+               keyContainer.classList.add("disabled");
+
+               if (!status) {
+                  updateCount();
+                  if (count === 6) {
+                     setTimeout(() => {
+                        gameOver();
+                     }, 100);
+                  }
                }
             }
-            keyContainer.classList.add("disabled");
-
-            if (!status) {
-               updateCount();
-               if (count === 6) {
-                  setTimeout(() => {
-                     gameOver();
-                  }, 100);
-               }
-            }
-         }
-      });
+         });
+      }
    }
 
    function gameOver() {
@@ -206,10 +210,14 @@ document.addEventListener("DOMContentLoaded", function () {
       const playAgainBtn = document.createElement("button");
       playAgainBtn.textContent = "Играть еще раз";
       playAgainBtn.onclick = () => {
-         startNewGame();
-         closeModal();
-         pageRender();
-         resetHuman();
+         if (words.length === 0) {
+            alert("ты прошел игру");
+         } else {
+            startNewGame();
+            closeModal();
+            pageRender();
+            resetHuman();
+         }
       };
 
       modalContent.textContent = "";
@@ -228,6 +236,7 @@ document.addEventListener("DOMContentLoaded", function () {
       if (modalAction) {
          modalAction.style.display = "flex";
       }
+      modalStatus = true;
    }
 
    function updateModal() {
@@ -237,7 +246,7 @@ document.addEventListener("DOMContentLoaded", function () {
    function updateModalLoser() {
       modalText.classList.add("modal-content__loser");
 
-      modalText.innerHTML = `You lose =(<br> Word is "${word.charAt(0).toUpperCase() + word.slice(1)}" <br> press "space" or "enter"`;
+      modalText.innerHTML = `You lose =(<br> Word is "${word.charAt(0).toUpperCase() + word.slice(1)}" <br> press "spaсe" or "enter"`;
    }
 
    function closeModal() {
@@ -245,15 +254,22 @@ document.addEventListener("DOMContentLoaded", function () {
       if (modalAction) {
          modalAction.style.display = "none";
       }
+      modalStatus = false;
    }
    document.addEventListener("keydown", function (event) {
-    if (event.key === "Enter" || event.key === " ") {
-        if (modalAction.style.display === "flex") {
-            startNewGame();
-            closeModal();
-            pageRender();
-            resetHuman();
-        }
-    }
-});
+      if (modalStatus) {
+         if (event.key === "Enter" || event.key === " ") {
+            if (modalAction.classList.contains("modal")) {
+               if (words.length === 0) {
+                  alert("ты прошел игру");
+               } else {
+                  startNewGame();
+                  closeModal();
+                  pageRender();
+                  resetHuman();
+               }
+            }
+         }
+      }
+   });
 });
