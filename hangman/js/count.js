@@ -23,21 +23,17 @@ document.addEventListener("DOMContentLoaded", function () {
       { rainbow: "A meteorological phenomenon that is caused by reflection, refraction, and dispersion of light." },
       { flower: "The reproductive structure found in flowering plants." },
       { dragon: "A mythical, fire-breathing creature." },
-      { shadow: "A dark area or shape produced by an object blocking the direct light." },
       { galaxy: "A system of millions or billions of stars." },
       { heart: "The organ that pumps blood." },
       { coffee: "A brewed beverage made from roasted coffee beans." },
       { laughter: "The sound of amusement." },
       { love: "An intense feeling of deep affection." },
       { courage: "The ability to confront fear or adversity." },
-      { forest: "A large area covered chiefly with trees." },
       { camera: "A device for capturing visual images." },
       { music: "Art of combining sounds in a harmonious manner." },
       { adventure: "An unusual and exciting experience." },
       { sunset: "The daily disappearance of the sun below the horizon." },
       { treasure: "A quantity of precious metals, gems, or other valuable objects." },
-      { dragon: "A mythical, fire-breathing creature." },
-      { rainbow: "A meteorological phenomenon that is caused by reflection, refraction, and dispersion of light." },
       { moonlight: "The light of the moon." },
       { space: "The vast, seemingly infinite expanse that exists beyond Earth." },
       { castle: "A large building, typically fortified." },
@@ -61,9 +57,7 @@ document.addEventListener("DOMContentLoaded", function () {
    let wordArray = word.toUpperCase().split("");
    let hideWordArray = new Array(wordArray.length).fill("_");
    let count = 0;
-   console.log(wordArray);
-   console.log(hideWordArray);
-   console.log(words);
+   console.log(word);
 
    spanElement.classList.add("count-value");
    spanElement.textContent = `${count} / 6`;
@@ -91,9 +85,6 @@ document.addEventListener("DOMContentLoaded", function () {
       countContainer.textContent = `Value: `;
       countContainer.appendChild(spanElement);
 
-      console.log(wordArray);
-      console.log(hideWordArray);
-      console.log(words);
       console.log(word);
    }
 
@@ -151,7 +142,6 @@ document.addEventListener("DOMContentLoaded", function () {
             for (let i = 0; i < wordArray.length; i++) {
                if (wordArray[i] === letter) {
                   hideWordArray[i] = wordArray[i];
-                  console.log(wordArray);
                   console.log(hideWordArray);
                   renderWordContainer(hideWordArray, wordContainer);
                }
@@ -174,8 +164,6 @@ document.addEventListener("DOMContentLoaded", function () {
                   }, 100);
                }
             }
-
-            console.log(letter);
          }
       });
    }
@@ -192,7 +180,6 @@ document.addEventListener("DOMContentLoaded", function () {
    function gameEnd() {
       let index = words.findIndex((obj) => Object.keys(obj)[0] === word);
       words.splice(index, 1);
-      console.log(words);
       const modalCreate = createModal(count);
       document.body.appendChild(modalCreate);
       openModal();
@@ -208,12 +195,11 @@ document.addEventListener("DOMContentLoaded", function () {
    function updateCount() {
       humanSlices[count].classList.remove("none");
       count += 1;
-      console.log(count);
       mainContaine.style.background = `#000000${count}0`;
       document.querySelector(".count-value").textContent = `${count} / 6`;
    }
 
-   function createModal(count) {
+   function createModal() {
       modal.classList.add("modal");
       modalContent.classList.add("modal-content");
 
@@ -246,12 +232,12 @@ document.addEventListener("DOMContentLoaded", function () {
 
    function updateModal() {
       modalText.classList.add("modal-content__winner");
-      modalText.innerHTML = `You win ^_^<br> Word is "${word.charAt(0).toUpperCase() + word.slice(1)}" <br> Count of false = ${count}`;
+      modalText.innerHTML = `You win ^_^<br> Word is "${word.charAt(0).toUpperCase() + word.slice(1)}" <br> Count of false = ${count} <br> press "space" or "enter"`;
    }
    function updateModalLoser() {
       modalText.classList.add("modal-content__loser");
 
-      modalText.innerHTML = `You lose =(<br> Word is "${word.charAt(0).toUpperCase() + word.slice(1)}" <br>`;
+      modalText.innerHTML = `You lose =(<br> Word is "${word.charAt(0).toUpperCase() + word.slice(1)}" <br> press "space" or "enter"`;
    }
 
    function closeModal() {
@@ -260,4 +246,14 @@ document.addEventListener("DOMContentLoaded", function () {
          modalAction.style.display = "none";
       }
    }
+   document.addEventListener("keydown", function (event) {
+    if (event.key === "Enter" || event.key === " ") {
+        if (modalAction.style.display === "flex") {
+            startNewGame();
+            closeModal();
+            pageRender();
+            resetHuman();
+        }
+    }
+});
 });
