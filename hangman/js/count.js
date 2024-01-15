@@ -4,16 +4,50 @@ document.addEventListener("DOMContentLoaded", function () {
    const wordContainer = document.querySelector(".text-area__word");
    const questContainer = document.querySelector(".text-area__quest");
    const countContainer = document.querySelector(".text-area__count");
+   const mainContaine = document.querySelector("main");
    const words = [
+      { sky: "The expanse of air over the Earth." },
+      { ocean: "A vast body of saltwater." },
+      { dance: "Expressive movement to music." },
+      { forest: "A large area covered chiefly with trees." },
+      { melody: "A sequence of musical tones." },
+      { shadow: "A dark area or shape produced by an object blocking the direct light." },
+      { sunrise: "The appearance of the sun above the horizon in the morning." },
+      { river: "A large, flowing body of water." },
+      { snow: "Frozen precipitation in the form of ice crystals." },
+      { book: "A written or printed work consisting of pages." },
+      { moon: "The natural satellite of the Earth." },
+      { magic: "The power of apparently influencing events by using mysterious forces." },
+      { star: "A celestial body that emits light." },
+      { pizza: "A savory dish consisting of a usually round, flattened base of dough." },
+      { rainbow: "A meteorological phenomenon that is caused by reflection, refraction, and dispersion of light." },
+      { flower: "The reproductive structure found in flowering plants." },
+      { dragon: "A mythical, fire-breathing creature." },
+      { shadow: "A dark area or shape produced by an object blocking the direct light." },
+      { galaxy: "A system of millions or billions of stars." },
+      { heart: "The organ that pumps blood." },
+      { coffee: "A brewed beverage made from roasted coffee beans." },
+      { laughter: "The sound of amusement." },
+      { love: "An intense feeling of deep affection." },
+      { courage: "The ability to confront fear or adversity." },
+      { forest: "A large area covered chiefly with trees." },
+      { camera: "A device for capturing visual images." },
+      { music: "Art of combining sounds in a harmonious manner." },
+      { adventure: "An unusual and exciting experience." },
+      { sunset: "The daily disappearance of the sun below the horizon." },
+      { treasure: "A quantity of precious metals, gems, or other valuable objects." },
+      { dragon: "A mythical, fire-breathing creature." },
+      { rainbow: "A meteorological phenomenon that is caused by reflection, refraction, and dispersion of light." },
+      { moonlight: "The light of the moon." },
+      { space: "The vast, seemingly infinite expanse that exists beyond Earth." },
+      { castle: "A large building, typically fortified." },
+      { dream: "A series of thoughts, images, and sensations occurring in a person's mind during sleep." },
       { apple: "A round fruit with red or green skin and a whitish interior." },
-      { guitar: "A musical instrument, usually having six strings, played by plucking or strumming." },
       { computer: "An electronic device for storing and processing data." },
       { elephant: "A large mammal with long tusks and a distinctive trunk." },
       { butterfly: "A winged insect with colorful wings and a slender body." },
       { mountain: "A large landform that rises prominently above its surroundings." },
-      { umbrella: "A device consisting of a collapsible circular frame covered with fabric, used for protection against rain or sunlight." },
-      { journey: "The act of traveling from one place to another." },
-      { whisper: "To speak or communicate in a soft, hushed voice." },
+      { umbrella: "A device, used for protection against rain or sunlight." },
       { victory: "The act of achieving success in challenge." },
    ];
    const modal = document.createElement("div");
@@ -49,6 +83,10 @@ document.addEventListener("DOMContentLoaded", function () {
       hideWordArray = new Array(wordArray.length).fill("_");
       pageClean();
       renderWordContainer(hideWordArray, wordContainer);
+      mainContaine.style.background = `#00000000`;
+      modalText.classList.remove("modal-content__winner");
+      modalText.classList.remove("modal-content__loser");
+
       questContainer.textContent = description;
       countContainer.textContent = `Value: `;
       countContainer.appendChild(spanElement);
@@ -145,7 +183,6 @@ document.addEventListener("DOMContentLoaded", function () {
    function gameOver() {
       gameEnd();
       updateModalLoser();
-
    }
    function gameWinner() {
       gameEnd();
@@ -172,13 +209,13 @@ document.addEventListener("DOMContentLoaded", function () {
       humanSlices[count].classList.remove("none");
       count += 1;
       console.log(count);
+      mainContaine.style.background = `#000000${count}0`;
       document.querySelector(".count-value").textContent = `${count} / 6`;
    }
 
    function createModal(count) {
       modal.classList.add("modal");
       modalContent.classList.add("modal-content");
-      modalText.textContent = `Game Wimmer! Word is ${word} , count of false = ${count}`;
 
       const playAgainBtn = document.createElement("button");
       playAgainBtn.textContent = "Играть еще раз";
@@ -208,10 +245,13 @@ document.addEventListener("DOMContentLoaded", function () {
    }
 
    function updateModal() {
-      modalText.innerHTML = `Game Wimmer!<br> Word is ${word} <br> count of false = ${count}`;
+      modalText.classList.add("modal-content__winner");
+      modalText.innerHTML = `You win ^_^<br> Word is "${word.charAt(0).toUpperCase() + word.slice(1)}" <br> Count of false = ${count}`;
    }
    function updateModalLoser() {
-      modalText.innerHTML = `Game Loser!<br> Word is ${word} <br> count of false = ${count}`;
+      modalText.classList.add("modal-content__loser");
+
+      modalText.innerHTML = `You lose =(<br> Word is "${word.charAt(0).toUpperCase() + word.slice(1)}" <br>`;
    }
 
    function closeModal() {
