@@ -1,5 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-   document.querySelector("body").innerHTML = `  <main>
+   document.querySelector("body").innerHTML = `  
+   <main>
     <section class="visual-area">
        <div class="hangman-visual-box">
           <img class="human-slice none" id="head" src="assets/content/head.svg" alt="" />
@@ -10,7 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
           <img class="human-slice none" id="rleg" src="assets/content/hand-two.svg" alt="" />
        </div>
        <h1>Hangman game</h1>
-       <button class="test-btn">Button</button>
     </section>
     <section class="text-area">
        <div class="text-area__word"></div>
