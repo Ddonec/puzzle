@@ -1,11 +1,10 @@
 document.addEventListener("DOMContentLoaded", function () {
-   const btn = document.querySelector(".test-btn");
    const humanSlices = document.querySelectorAll(".human-slice");
    const spanElement = document.createElement("span");
    const wordContainer = document.querySelector(".text-area__word");
    const questContainer = document.querySelector(".text-area__quest");
    const countContainer = document.querySelector(".text-area__count");
-   let words = [
+   const words = [
       { apple: "A round fruit with red or green skin and a whitish interior." },
       { guitar: "A musical instrument, usually having six strings, played by plucking or strumming." },
       { computer: "An electronic device for storing and processing data." },
@@ -17,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
       { whisper: "To speak or communicate in a soft, hushed voice." },
       { victory: "The act of achieving success in challenge." },
    ];
+   const modal = document.createElement("div");
+   const modalContent = document.createElement("div");
+   const modalText = document.createElement("p");
 
    let random = Math.floor(Math.random() * words.length);
    let wordObject = words[random];
@@ -24,11 +26,10 @@ document.addEventListener("DOMContentLoaded", function () {
    let description = wordObject[word];
    let wordArray = word.toUpperCase().split("");
    let hideWordArray = new Array(wordArray.length).fill("_");
+   let count = 0;
    console.log(wordArray);
    console.log(hideWordArray);
    console.log(words);
-
-   let count = 0;
 
    spanElement.classList.add("count-value");
    spanElement.textContent = `${count} / 6`;
@@ -55,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
       console.log(wordArray);
       console.log(hideWordArray);
       console.log(words);
+      console.log(word);
    }
 
    function pageClean() {
@@ -141,34 +143,81 @@ document.addEventListener("DOMContentLoaded", function () {
    }
 
    function gameOver() {
-      alert("Game Over!");
-      humanSlices.forEach((element) => {
-         element.classList.add("none");
-         count = 0;
-         document.querySelector(".count-value").textContent = `${count} / 6`;
+      gameEnd();
+      updateModalLoser();
 
-         pageClean();
-         startNewGame();
-         pageRender();
-      });
    }
    function gameWinner() {
-      alert(`Game Wimmer! Word is ${word} , count of false = ${count}`);
-      humanSlices.forEach((element) => {
-         element.classList.add("none");
-         count = 0;
-         document.querySelector(".count-value").textContent = `${count} / 6`;
-      });
-      console.log(words);
-      pageClean();
-      startNewGame();
-      pageRender();
+      gameEnd();
+      updateModal();
    }
 
+   function gameEnd() {
+      let index = words.findIndex((obj) => Object.keys(obj)[0] === word);
+      words.splice(index, 1);
+      console.log(words);
+      const modalCreate = createModal(count);
+      document.body.appendChild(modalCreate);
+      openModal();
+   }
+
+   function resetHuman() {
+      humanSlices.forEach((element) => {
+         element.classList.add("none");
+      });
+      count = 0;
+      document.querySelector(".count-value").textContent = `${count} / 6`;
+   }
    function updateCount() {
       humanSlices[count].classList.remove("none");
       count += 1;
       console.log(count);
       document.querySelector(".count-value").textContent = `${count} / 6`;
+   }
+
+   function createModal(count) {
+      modal.classList.add("modal");
+      modalContent.classList.add("modal-content");
+      modalText.textContent = `Game Wimmer! Word is ${word} , count of false = ${count}`;
+
+      const playAgainBtn = document.createElement("button");
+      playAgainBtn.textContent = "Играть еще раз";
+      playAgainBtn.onclick = () => {
+         startNewGame();
+         closeModal();
+         pageRender();
+         resetHuman();
+      };
+
+      modalContent.textContent = "";
+      modalContent.appendChild(modalText);
+      modalContent.appendChild(playAgainBtn);
+
+      modal.textContent = "";
+      modal.appendChild(modalContent);
+
+      return modal;
+   }
+   let modalAction;
+
+   function openModal() {
+      modalAction = document.querySelector(".modal");
+      if (modalAction) {
+         modalAction.style.display = "flex";
+      }
+   }
+
+   function updateModal() {
+      modalText.innerHTML = `Game Wimmer!<br> Word is ${word} <br> count of false = ${count}`;
+   }
+   function updateModalLoser() {
+      modalText.innerHTML = `Game Loser!<br> Word is ${word} <br> count of false = ${count}`;
+   }
+
+   function closeModal() {
+      modalAction = document.querySelector(".modal");
+      if (modalAction) {
+         modalAction.style.display = "none";
+      }
    }
 });
