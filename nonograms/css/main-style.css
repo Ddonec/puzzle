@@ -34,6 +34,13 @@ body {
    background-color: white;
    position: relative;
    transition: 0.3s;
+   display: flex;
+   align-items: center;
+   justify-content: space-around;
+   font-size: xx-large;
+   font-family: monospace;
+   font-weight: bold;
+   cursor: default;
 }
 .cell:hover {
    border: #000 1px solid;
@@ -44,7 +51,7 @@ body {
 }
 
 .cell.x {
-   background-color: red;
+   background-color: rgb(184, 150, 150);
 }
 
 .game-container {
@@ -101,7 +108,7 @@ body {
    right: -7px;
    width: 4px;
    height: 2500%;
-   background-color: red;
+   background-color: salmon;
 }
 
 #nonograma .row-container .cell:nth-child(5n):not(:last-child)::before {
@@ -111,7 +118,7 @@ body {
    left: -300%;
    width: 420%;
    height: 4px;
-   background-color: red;
+   background-color: salmon;
 }
 
 .modal {

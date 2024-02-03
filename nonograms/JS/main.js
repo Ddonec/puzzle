@@ -1,47 +1,8 @@
-const nan1 = {
-   task: 1,
-   size: 5,
-   sost: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-   sol: [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-   podsk1: [1, 1, 1, 1, 1],
-   podsk2: [5, 0, 0, 0, 0],
-};
-const nan2 = {
-   task: 2,
-   size: 5,
-   sost: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-   sol: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-   podsk1: [1, 1, 1, 1, 1],
-   podsk2: [0, 5, 0, 0, 0],
-};
+import { nan1 } from "./mystery.js";
+import { nan2 } from "./mystery.js";
+import { nan11 } from "./mystery.js";
+import { nan15 } from "./mystery.js";
 
-const nan11 = {
-   task: 11,
-   size: 10,
-   sost: [
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-   ],
-   sol: [
-      0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1,
-      1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-   ],
-   podsk1: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
-   podsk2: [0, 5, 5, 5, 8, 0, 0, 0, 0, 0],
-};
-const nan15 = {
-   task: 11,
-   size: 15,
-   sost: Array(225).fill(0),
-   sol: [
-      0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1,
-      1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0,
-      0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
-      0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
-   ],
-   podsk1: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
-   podsk2: [0, 5, 5, 5, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
-};
 let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
@@ -159,6 +120,9 @@ function renderNonogram() {
 
          cell.addEventListener("click", handleCellClick);
          cell.addEventListener("contextmenu", handleContextMenu);
+         nonograma.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+         });
 
          rowContainer.appendChild(cell);
       }
@@ -168,7 +132,7 @@ function renderNonogram() {
 }
 renderNonogram();
 const gameContainer = document.createElement("section");
-gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.size + 1} + 10px)`;
+gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.widthP + 2})`;
 
 gameContainer.classList.add("game-container");
 gameContainer.appendChild(squareSol);
@@ -183,6 +147,7 @@ function handleCellClick(event) {
    if (event.button === 0) {
       this.classList.toggle("black");
       this.classList.remove("x");
+      this.textContent = "";
       updateNewArr();
       if (!timer) {
          startTimer();
@@ -193,8 +158,15 @@ function handleCellClick(event) {
 
 function handleContextMenu(event) {
    event.preventDefault();
-   this.classList.toggle("x");
-   this.classList.remove("black");
+   const hasXClass = this.classList.contains("x");
+   if (hasXClass) {
+      this.classList.remove("x");
+      this.textContent = "";
+   } else {
+      this.classList.add("x");
+      this.classList.remove("black");
+      this.textContent = "X";
+   }
    updateNewArr();
    if (!timer) {
       startTimer();
@@ -247,8 +219,8 @@ function closeModal() {
    playAgain();
 }
 function playAgain() {
-    resetTimer();
-    gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.size + 2} + 10px)`;
+   resetTimer();
+   gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.widthP + 2})`;
 
    const topPodskazki = document.querySelector(".top-podskazri");
    const leftPodskazki = document.querySelector(".left-podskazki");
@@ -266,6 +238,7 @@ function playAgain() {
 
 function restartGame() {
    console.log("restart game");
+   playAgain();
 }
 function saveGame() {
    console.log("save game");
