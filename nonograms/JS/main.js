@@ -9,6 +9,35 @@ const nan1 = {
 
 let newArr = [...nan1.sost];
 
+let timer = false;
+let seconds = 10;
+
+function startTimer() {
+   timer = setInterval(() => {
+      seconds++;
+      updateTimer();
+   }, 1000);
+}
+function resetTimer() {
+   stopTimer();
+   seconds = 0;
+   updateTimer();
+   timer = false;
+}
+
+function stopTimer() {
+   clearInterval(timer);
+}
+function updateTimer() {
+   console.log(seconds);
+   const time = document.querySelector(".timer");
+   time.innerText = seconds;
+}
+const timerZone = document.createElement("div");
+timerZone.classList.add("timer");
+timerZone.innerText = seconds;
+document.body.appendChild(timerZone);
+
 const squareSol = document.createElement("div");
 squareSol.classList.add("square-sol");
 const topPodskazki = document.createElement("div");
@@ -65,6 +94,9 @@ function handleCellClick(event) {
       this.classList.toggle("black");
       this.classList.remove("x");
       updateNewArr();
+      if (!timer) {
+         startTimer();
+      }
       console.log(newArr);
    }
 }
@@ -74,6 +106,9 @@ function handleContextMenu(event) {
    this.classList.toggle("x");
    this.classList.remove("black");
    updateNewArr();
+   if (!timer) {
+      startTimer();
+   }
    console.log(newArr);
 }
 function updateNewArr() {
@@ -90,7 +125,6 @@ function WinCheck(arr1, arr2) {
 }
 
 function createModal() {
-   // Создаем элементы модального окна
    const fill = document.createElement("div");
    fill.classList.add("fill");
 
@@ -101,7 +135,8 @@ function createModal() {
    modalContent.classList.add("modal-content");
 
    const message = document.createElement("p");
-   message.textContent = "Отлично! Вы решили нонограмму!";
+   message.textContent = `Отлично! Вы решили нонограмму за ${seconds} секунд!`;
+   stopTimer();
 
    const playAgainBtn = document.createElement("button");
    playAgainBtn.textContent = "Сыграть еще раз";
@@ -119,6 +154,7 @@ function playAgain() {
    modal.remove();
    const fill = document.querySelector(".fill");
    fill.remove();
+   resetTimer();
 
    nonograma.innerHTML = "";
 
