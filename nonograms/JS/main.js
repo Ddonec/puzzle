@@ -1,14 +1,22 @@
 const nan1 = {
    task: 1,
    size: 5,
-   sost: [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+   sost: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
    sol: [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
    podsk1: [1, 1, 1, 1, 1],
    podsk2: [5, 0, 0, 0, 0],
 };
+const nan2 = {
+   task: 2,
+   size: 5,
+   sost: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+   sol: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+   podsk1: [1, 1, 1, 1, 1],
+   podsk2: [0, 5, 0, 0, 0],
+};
 
-let newArr = [...nan1.sost];
-
+let nanObj = nan1;
+let newArr = [...nanObj.sost];
 let timer = false;
 let seconds = 0;
 
@@ -46,6 +54,9 @@ const timerZone = document.createElement("div");
 timerZone.classList.add("timer");
 timerZone.innerText = formatTimer(seconds);
 
+const buttonsContainerZone = document.createElement("div");
+buttonsContainerZone.classList.add("button-container");
+
 const saveButtonZone = document.createElement("button");
 saveButtonZone.textContent = "Save game";
 saveButtonZone.onclick = saveGame;
@@ -70,12 +81,14 @@ const leaderBoardlZone = document.createElement("button");
 leaderBoardlZone.textContent = "Leader board";
 leaderBoardlZone.onclick = leaderBoard;
 
-document.body.appendChild(restartButtonZone);
-document.body.appendChild(saveButtonZone);
-document.body.appendChild(showSolutionZone);
-document.body.appendChild(loadGameZone);
-document.body.appendChild(ChoseLevelZone);
-document.body.appendChild(leaderBoardlZone);
+document.body.appendChild(buttonsContainerZone);
+
+buttonsContainerZone.appendChild(restartButtonZone);
+buttonsContainerZone.appendChild(saveButtonZone);
+buttonsContainerZone.appendChild(showSolutionZone);
+buttonsContainerZone.appendChild(loadGameZone);
+buttonsContainerZone.appendChild(ChoseLevelZone);
+buttonsContainerZone.appendChild(leaderBoardlZone);
 
 document.body.appendChild(timerZone);
 
@@ -85,43 +98,48 @@ const topPodskazki = document.createElement("div");
 topPodskazki.classList.add("top-podskazri");
 const leftPodskazki = document.createElement("div");
 leftPodskazki.classList.add("left-podskazki");
-
-for (const value of nan1.podsk2) {
-   const podsk2 = document.createElement("div");
-   podsk2.classList.add("podsk2");
-   podsk2.textContent = value;
-   topPodskazki.appendChild(podsk2);
-}
-
-for (const value of nan1.podsk1) {
-   const podsk1 = document.createElement("div");
-   podsk1.classList.add("podsk1");
-   podsk1.textContent = value;
-   leftPodskazki.appendChild(podsk1);
-}
-
 const nonograma = document.createElement("div");
 nonograma.id = "nonograma";
 
-for (let i = 0; i < nan1.size; i++) {
-   const rowContainer = document.createElement("div");
-   rowContainer.classList.add("row-container");
-
-   for (let j = 0; j < nan1.size; j++) {
-      const cell = document.createElement("div");
-      cell.classList.add("cell");
-      cell.classList.add(nan1.sost[i * nan1.size + j] ? "black" : "white");
-
-      cell.addEventListener("click", handleCellClick);
-      cell.addEventListener("contextmenu", handleContextMenu);
-
-      rowContainer.appendChild(cell);
+function podskazkiCreate() {
+   for (const value of nanObj.podsk2) {
+      const podsk2 = document.createElement("div");
+      podsk2.classList.add("podsk2");
+      podsk2.textContent = value;
+      topPodskazki.appendChild(podsk2);
    }
 
-   nonograma.appendChild(rowContainer);
+   for (const value of nanObj.podsk1) {
+      const podsk1 = document.createElement("div");
+      podsk1.classList.add("podsk1");
+      podsk1.textContent = value;
+      leftPodskazki.appendChild(podsk1);
+   }
 }
+podskazkiCreate();
 
+function renderNonogram() {
+   for (let i = 0; i < nanObj.size; i++) {
+      const rowContainer = document.createElement("div");
+      rowContainer.classList.add("row-container");
+
+      for (let j = 0; j < nanObj.size; j++) {
+         const cell = document.createElement("div");
+         cell.classList.add("cell");
+         cell.classList.add(nanObj.sost[i * nanObj.size + j] ? "black" : "white");
+
+         cell.addEventListener("click", handleCellClick);
+         cell.addEventListener("contextmenu", handleContextMenu);
+
+         rowContainer.appendChild(cell);
+      }
+
+      nonograma.appendChild(rowContainer);
+   }
+}
+renderNonogram();
 const gameContainer = document.createElement("section");
+
 gameContainer.classList.add("game-container");
 gameContainer.appendChild(squareSol);
 gameContainer.appendChild(topPodskazki);
@@ -155,7 +173,7 @@ function handleContextMenu(event) {
 function updateNewArr() {
    newArr = Array.from(document.querySelectorAll(".row-container")).flatMap((row) => Array.from(row.querySelectorAll(".cell")).map((cell) => (cell.classList.contains("black") ? 1 : 0)));
 
-   WinCheck(newArr, nan1.sol);
+   WinCheck(newArr, nanObj.sol);
 }
 
 function WinCheck(arr1, arr2) {
@@ -181,7 +199,7 @@ function createModal() {
 
    const playAgainBtn = document.createElement("button");
    playAgainBtn.textContent = "Сыграть еще раз";
-   playAgainBtn.addEventListener("click", playAgain);
+   playAgainBtn.addEventListener("click", closeModal);
 
    modalContent.appendChild(message);
    modalContent.appendChild(playAgainBtn);
@@ -190,33 +208,29 @@ function createModal() {
    document.body.appendChild(fill);
 }
 
-function playAgain() {
+function closeModal() {
    const modal = document.querySelector(".modal");
    modal.remove();
    const fill = document.querySelector(".fill");
    fill.remove();
+   playAgain();
+}
+function playAgain() {
    resetTimer();
+
+   const topPodskazki = document.querySelector(".top-podskazri");
+   const leftPodskazki = document.querySelector(".left-podskazki");
+
+   topPodskazki.textContent = "";
+   leftPodskazki.textContent = "";
+
+   podskazkiCreate();
 
    nonograma.innerHTML = "";
 
-   for (let i = 0; i < nan1.size; i++) {
-      const rowContainer = document.createElement("div");
-      rowContainer.classList.add("row-container");
-
-      for (let j = 0; j < nan1.size; j++) {
-         const cell = document.createElement("div");
-         cell.classList.add("cell");
-         cell.classList.add(nan1.sost[i * nan1.size + j] ? "black" : "white");
-
-         cell.addEventListener("click", handleCellClick);
-         cell.addEventListener("contextmenu", handleContextMenu);
-
-         rowContainer.appendChild(cell);
-      }
-
-      nonograma.appendChild(rowContainer);
-   }
+   renderNonogram();
 }
+
 function restartGame() {
    console.log("restart game");
 }
@@ -229,8 +243,17 @@ function showSolution() {
 function loadGame() {
    console.log("Load last game");
 }
+
 function ChoseLevel() {
+   const levelChoice = prompt("указать номер уровня");
+
+   if (levelChoice === "1") {
+      nanObj = nan1;
+   } else if (levelChoice === "2") {
+      nanObj = nan2;
+   } 
    console.log("Chose level");
+   playAgain();
 }
 function leaderBoard() {
    console.log("Leaderboard");
