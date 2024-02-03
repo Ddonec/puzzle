@@ -15,6 +15,33 @@ const nan2 = {
    podsk2: [0, 5, 0, 0, 0],
 };
 
+const nan11 = {
+   task: 11,
+   size: 10,
+   sost: [
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+   ],
+   sol: [
+      0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1,
+      1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+   ],
+   podsk1: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+   podsk2: [0, 5, 5, 5, 8, 0, 0, 0, 0, 0],
+};
+const nan15 = {
+   task: 11,
+   size: 15,
+   sost: Array(225).fill(0),
+   sol: [
+      0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1,
+      1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0,
+      0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
+      0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0,
+   ],
+   podsk1: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
+   podsk2: [0, 5, 5, 5, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+};
 let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
@@ -98,6 +125,8 @@ const topPodskazki = document.createElement("div");
 topPodskazki.classList.add("top-podskazri");
 const leftPodskazki = document.createElement("div");
 leftPodskazki.classList.add("left-podskazki");
+const nonogramaCont = document.createElement("div");
+nonogramaCont.id = "nonogramaCont";
 const nonograma = document.createElement("div");
 nonograma.id = "nonograma";
 
@@ -139,12 +168,14 @@ function renderNonogram() {
 }
 renderNonogram();
 const gameContainer = document.createElement("section");
+gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.size + 1} + 10px)`;
 
 gameContainer.classList.add("game-container");
 gameContainer.appendChild(squareSol);
 gameContainer.appendChild(topPodskazki);
 gameContainer.appendChild(leftPodskazki);
-gameContainer.appendChild(nonograma);
+nonogramaCont.appendChild(nonograma);
+gameContainer.appendChild(nonogramaCont);
 
 document.body.appendChild(gameContainer);
 
@@ -216,7 +247,8 @@ function closeModal() {
    playAgain();
 }
 function playAgain() {
-   resetTimer();
+    resetTimer();
+    gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.size + 2} + 10px)`;
 
    const topPodskazki = document.querySelector(".top-podskazri");
    const leftPodskazki = document.querySelector(".left-podskazki");
@@ -227,6 +259,7 @@ function playAgain() {
    podskazkiCreate();
 
    nonograma.innerHTML = "";
+   nonograma.style.gridTemplateColumns = `repeat(${nanObj.size}, var(--razmer-cell))`;
 
    renderNonogram();
 }
@@ -251,7 +284,11 @@ function ChoseLevel() {
       nanObj = nan1;
    } else if (levelChoice === "2") {
       nanObj = nan2;
-   } 
+   } else if (levelChoice === "3") {
+      nanObj = nan11;
+   } else if (levelChoice === "4") {
+      nanObj = nan15;
+   }
    console.log("Chose level");
    playAgain();
 }

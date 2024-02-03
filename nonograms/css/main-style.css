@@ -15,10 +15,16 @@ body {
    grid-template-columns: repeat(5, var(--razmer-cell));
    /* grid-template-rows: repeat(5, var(--razmer-cell)); */
    gap: 0px;
-   width: calc(var(--razmer-cell) * 5);
+   /* width: calc(var(--razmer-cell) * 5); */
    border: 5px solid salmon;
    justify-items: center;
-   overflow: hidden;
+   /* overflow: hidden; */
+   /* position: absolute; */
+   height: 100%;
+}
+#nonogramaCont {
+   aspect-ratio: 1;
+   position: relative;
 }
 
 .cell {
@@ -44,21 +50,24 @@ body {
 .game-container {
    display: flex;
    flex-wrap: wrap;
-   justify-content: space-between;
-   align-content: space-between;
    position: relative;
-   width: calc(var(--razmer-cell) * 6 + 10px);
-   row-gap: 10px;
+   /* width: calc(var(--razmer-cell) * 6 + 10px); */
+   /* row-gap: 10px; */
+   margin: 20px 0 100px;
+   overflow: hidden;
 }
 
 .square-sol {
    background: gray;
-   width: var(--razmer-cell);
-   height: var(--razmer-cell);
+   /* width: var(--razmer-cell);
+   height: var(--razmer-cell); */
+   width: 10%;
+   aspect-ratio: 1;
 }
 .top-podskazri {
    display: flex;
-   width: calc(var(--razmer-cell) * 5);
+   /* width: calc(var(--razmer-cell) * 5); */
+   width: 90%;
 }
 .podsk2 {
    width: var(--razmer-cell);
@@ -69,7 +78,9 @@ body {
 .left-podskazki {
    display: flex;
    flex-direction: column;
-   width: var(--razmer-cell);
+   /* width: var(--razmer-cell); */
+   width: 10%;
+   padding-top: 10px;
 }
 .podsk1 {
    height: var(--razmer-cell);
@@ -82,19 +93,26 @@ body {
    flex-direction: column;
    justify-content: space-evenly;
 }
-/* #nonograma .row-container:nth-child(odd) {
-   background-color: aqua;
-}
 
-#nonograma .row-container:nth-child(even) .cell:nth-child(2)::before {
+#nonograma .row-container:nth-child(5n):not(:last-child) .cell:nth-child(1)::before {
    content: "";
    position: absolute;
-   top: -200%;
+   top: -300%;
    right: -7px;
    width: 4px;
-   height: 1000%;
+   height: 2500%;
    background-color: red;
-} */
+}
+
+#nonograma .row-container .cell:nth-child(5n):not(:last-child)::before {
+   content: "";
+   position: absolute;
+   bottom: -18%;
+   left: -300%;
+   width: 420%;
+   height: 4px;
+   background-color: red;
+}
 
 .modal {
    position: fixed;
