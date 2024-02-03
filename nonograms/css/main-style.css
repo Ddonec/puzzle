@@ -1,3 +1,9 @@
+:root {
+   --razmer1: 20px;
+   --razmer2: 40px;
+   --razmer-cell: 50px;
+}
+
 body {
    display: flex;
    flex-direction: column;
@@ -6,9 +12,13 @@ body {
 
 #nonograma {
    display: grid;
-   grid-template-columns: repeat(10, 50px); 
-   grid-template-rows: repeat(10, 50px); 
-   gap: 1px;
+   grid-template-columns: repeat(5, var(--razmer-cell));
+   /* grid-template-rows: repeat(5, var(--razmer-cell)); */
+   gap: 0px;
+   width: calc(var(--razmer-cell) * 5);
+   border: 5px solid salmon;
+   justify-items: center;
+   overflow: hidden;
 }
 
 .cell {
@@ -16,12 +26,103 @@ body {
    height: 40px;
    border: 1px solid #ccc;
    background-color: white;
+   position: relative;
 }
 
-.cell.clicked {
+.cell.black {
    background-color: black;
 }
 
-.cell.cross {
+.cell.x {
    background-color: red;
+}
+
+.game-container {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-content: space-between;
+   position: relative;
+   width: calc(var(--razmer-cell) * 6 + 10px);
+   row-gap: 10px;
+}
+
+.square-sol {
+   background: gray;
+   width: var(--razmer-cell);
+   height: var(--razmer-cell);
+}
+.top-podskazri {
+   display: flex;
+   width: calc(var(--razmer-cell) * 5);
+}
+.podsk2 {
+   width: var(--razmer-cell);
+   display: flex;
+   justify-content: center;
+   align-items: flex-end;
+}
+.left-podskazki {
+   display: flex;
+   flex-direction: column;
+   width: var(--razmer-cell);
+}
+.podsk1 {
+   height: var(--razmer-cell);
+   display: flex;
+   flex-direction: row-reverse;
+   align-items: center;
+}
+.row-container {
+   display: flex;
+   flex-direction: column;
+   justify-content: space-evenly;
+}
+/* #nonograma .row-container:nth-child(odd) {
+   background-color: aqua;
+}
+
+#nonograma .row-container:nth-child(even) .cell:nth-child(2)::before {
+   content: "";
+   position: absolute;
+   top: -200%;
+   right: -7px;
+   width: 4px;
+   height: 1000%;
+   background-color: red;
+} */
+
+.modal {
+   position: fixed;
+   top: 50%;
+   left: 50%;
+   transform: translate(-50%, -50%);
+   background: white;
+   padding: 20px;
+   border-radius: 8px;
+   box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
+   z-index: 2;
+}
+.modal-content {
+   text-align: center;
+}
+
+.modal-content > button {
+   background: chocolate;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   font-size: 16px;
+   cursor: pointer;
+   border-radius: 4px;
+}
+.fill {
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   height: 100vh;
+   background: #000;
+   opacity: 0.2;
+   z-index: 1;
 }
