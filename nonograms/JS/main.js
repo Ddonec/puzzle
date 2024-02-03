@@ -1,3 +1,4 @@
+import { arrOfMystery } from "./mystery.js";
 import { nan1 } from "./mystery.js";
 import { nan2 } from "./mystery.js";
 import { nan11 } from "./mystery.js";
@@ -6,7 +7,7 @@ import { nan15 } from "./mystery.js";
 let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
-let seconds = 0;
+let seconds = 10;
 
 function startTimer() {
    timer = setInterval(() => {
@@ -14,10 +15,11 @@ function startTimer() {
       updateTimer();
    }, 1000);
 }
+
 function resetTimer() {
    stopTimer();
    seconds = 0;
-   updateTimer();
+   updateTimer(seconds);
    timer = false;
 }
 
@@ -27,10 +29,10 @@ function stopTimer() {
 function updateTimer() {
    console.log(seconds);
    const time = document.querySelector(".timer");
-   time.innerText = formatTimer(seconds);
+   time.innerText = formatTimer();
 }
 
-function formatTimer(seconds) {
+function formatTimer() {
    const minutes = Math.floor(seconds / 60);
    const secondsValue = seconds % 60;
    const minCorrect = String(minutes).padStart(2, "0");
@@ -38,6 +40,7 @@ function formatTimer(seconds) {
 
    return `${minCorrect}:${secCorrect}`;
 }
+
 const timerZone = document.createElement("div");
 timerZone.classList.add("timer");
 timerZone.innerText = formatTimer(seconds);
@@ -116,8 +119,13 @@ function renderNonogram() {
       for (let j = 0; j < nanObj.size; j++) {
          const cell = document.createElement("div");
          cell.classList.add("cell");
-         cell.classList.add(nanObj.sost[i * nanObj.size + j] ? "black" : "white");
+         cell.classList.add(nanObj.sost[i * nanObj.size + j] === 1 ? "black" : nanObj.sost[i * nanObj.size + j] === 2 ? "x" : "white");
 
+         if (nanObj.sost[i * nanObj.size + j] === 2) {
+            cell.textContent = "X";
+         } else {
+            cell.textContent = "";
+         }
          cell.addEventListener("click", handleCellClick);
          cell.addEventListener("contextmenu", handleContextMenu);
          nonograma.addEventListener("contextmenu", function (e) {
@@ -159,22 +167,37 @@ function handleCellClick(event) {
 function handleContextMenu(event) {
    event.preventDefault();
    const hasXClass = this.classList.contains("x");
+
    if (hasXClass) {
       this.classList.remove("x");
       this.textContent = "";
    } else {
-      this.classList.add("x");
+      this.classList.toggle("x");
       this.classList.remove("black");
       this.textContent = "X";
    }
+
    updateNewArr();
    if (!timer) {
       startTimer();
    }
-   console.log(newArr);
 }
+
 function updateNewArr() {
-   newArr = Array.from(document.querySelectorAll(".row-container")).flatMap((row) => Array.from(row.querySelectorAll(".cell")).map((cell) => (cell.classList.contains("black") ? 1 : 0)));
+   newArr = Array.from(document.querySelectorAll(".row-container")).flatMap((row) =>
+      Array.from(row.querySelectorAll(".cell")).map((cell) => {
+         const isBlack = cell.classList.contains("black");
+         const isX = cell.classList.contains("x");
+
+         if (isBlack) {
+            return 1;
+         } else if (isX) {
+            return 2;
+         } else {
+            return 0;
+         }
+      })
+   );
 
    WinCheck(newArr, nanObj.sol);
 }
@@ -185,7 +208,6 @@ function WinCheck(arr1, arr2) {
       createModal();
    }
 }
-
 function createModal() {
    const fill = document.createElement("div");
    fill.classList.add("fill");
@@ -217,9 +239,9 @@ function closeModal() {
    const fill = document.querySelector(".fill");
    fill.remove();
    playAgain();
+   resetTimer();
 }
 function playAgain() {
-   resetTimer();
    gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.widthP + 2})`;
 
    const topPodskazki = document.querySelector(".top-podskazri");
@@ -239,32 +261,51 @@ function playAgain() {
 function restartGame() {
    console.log("restart game");
    playAgain();
+   resetTimer();
 }
 function saveGame() {
+   let newObJ = { ...nanObj };
+
+   newObJ.sost = newArr;
+   newObJ.timer = seconds;
+   let newObJJSON = JSON.stringify(newObJ);
+   localStorage.setItem("newObJ", newObJJSON);
    console.log("save game");
 }
+
 function showSolution() {
    console.log("Show game");
 }
 function loadGame() {
-   console.log("Load last game");
+   const nanObjJSON = localStorage.getItem("newObJ");
+
+   if (nanObjJSON) {
+      nanObj = JSON.parse(nanObjJSON);
+      seconds = nanObj.timer || 0;
+      updateTimer();
+      console.log("Игра загружена");
+        playAgain();
+        startTimer();
+      return seconds;
+   } else {
+      console.log("Сохраненной игры не найдено");
+      return null;
+   }
 }
 
 function ChoseLevel() {
    const levelChoice = prompt("указать номер уровня");
+   nanObj = arrOfMystery[levelChoice - 1];
 
-   if (levelChoice === "1") {
-      nanObj = nan1;
-   } else if (levelChoice === "2") {
-      nanObj = nan2;
-   } else if (levelChoice === "3") {
-      nanObj = nan11;
-   } else if (levelChoice === "4") {
-      nanObj = nan15;
-   }
    console.log("Chose level");
    playAgain();
+   resetTimer();
 }
 function leaderBoard() {
+   const nanObjJSON = localStorage.getItem("newObJ");
+
    console.log("Leaderboard");
+   nanObj = JSON.parse(nanObjJSON);
+   seconds = nanObj.timer;
+   console.log(seconds);
 }

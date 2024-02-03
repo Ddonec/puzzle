@@ -2,10 +2,11 @@ export const nan1 = {
    task: 1,
    size: 5,
    widthP: 4,
-   sost: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+   sost: [1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
    sol: [1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
    podsk1: [1, 1, 1, 1, 1],
    podsk2: [5, 0, 0, 0, 0],
+   timer: 0,
 };
 
 export const nan2 = {
@@ -17,6 +18,7 @@ export const nan2 = {
    sol: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
    podsk1: [1, 1, 1, 1, 1],
    podsk2: [0, 5, 0, 0, 0],
+   timer: 0,
 };
 export const nan11 = {
    task: 11,
@@ -32,10 +34,11 @@ export const nan11 = {
    ],
    podsk1: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
    podsk2: [0, 5, 5, 5, 8, 0, 0, 0, 0, 0],
+   timer: 0,
 };
 
 export const nan15 = {
-   task: 11,
+   task: 15,
    size: 15,
    widthP: 15,
 
@@ -48,4 +51,7 @@ export const nan15 = {
    ],
    podsk1: [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0],
    podsk2: [0, 5, 5, 5, 8, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+   timer: 0,
 };
+
+export const arrOfMystery = [nan1, nan2, nan11, nan15];
