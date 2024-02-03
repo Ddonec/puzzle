@@ -10,7 +10,7 @@ const nan1 = {
 let newArr = [...nan1.sost];
 
 let timer = false;
-let seconds = 10;
+let seconds = 0;
 
 function startTimer() {
    timer = setInterval(() => {
@@ -36,6 +36,38 @@ function updateTimer() {
 const timerZone = document.createElement("div");
 timerZone.classList.add("timer");
 timerZone.innerText = seconds;
+
+const saveButtonZone = document.createElement("button");
+saveButtonZone.textContent = "Save game";
+saveButtonZone.onclick = saveGame;
+
+const restartButtonZone = document.createElement("button");
+restartButtonZone.textContent = "Restart game";
+restartButtonZone.onclick = restartGame;
+
+const showSolutionZone = document.createElement("button");
+showSolutionZone.textContent = "Show game solution";
+showSolutionZone.onclick = showSolution;
+
+const loadGameZone = document.createElement("button");
+loadGameZone.textContent = "Load game";
+loadGameZone.onclick = loadGame;
+
+const ChoseLevelZone = document.createElement("button");
+ChoseLevelZone.textContent = "Chose level";
+ChoseLevelZone.onclick = ChoseLevel;
+
+const leaderBoardlZone = document.createElement("button");
+leaderBoardlZone.textContent = "Leader board";
+leaderBoardlZone.onclick = leaderBoard;
+
+document.body.appendChild(restartButtonZone);
+document.body.appendChild(saveButtonZone);
+document.body.appendChild(showSolutionZone);
+document.body.appendChild(loadGameZone);
+document.body.appendChild(ChoseLevelZone);
+document.body.appendChild(leaderBoardlZone);
+
 document.body.appendChild(timerZone);
 
 const squareSol = document.createElement("div");
@@ -175,4 +207,22 @@ function playAgain() {
 
       nonograma.appendChild(rowContainer);
    }
+}
+function restartGame() {
+   console.log("restart game");
+}
+function saveGame() {
+   console.log("save game");
+}
+function showSolution() {
+   console.log("Show game");
+}
+function loadGame() {
+   console.log("Load last game");
+}
+function ChoseLevel() {
+   console.log("Chose level");
+}
+function leaderBoard() {
+   console.log("Leaderboard");
 }
