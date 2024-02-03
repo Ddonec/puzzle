@@ -31,11 +31,20 @@ function stopTimer() {
 function updateTimer() {
    console.log(seconds);
    const time = document.querySelector(".timer");
-   time.innerText = seconds;
+   time.innerText = formatTimer(seconds);
+}
+
+function formatTimer(seconds) {
+   const minutes = Math.floor(seconds / 60);
+   const secondsValue = seconds % 60;
+   const minCorrect = String(minutes).padStart(2, "0");
+   const secCorrect = String(secondsValue).padStart(2, "0");
+
+   return `${minCorrect}:${secCorrect}`;
 }
 const timerZone = document.createElement("div");
 timerZone.classList.add("timer");
-timerZone.innerText = seconds;
+timerZone.innerText = formatTimer(seconds);
 
 const saveButtonZone = document.createElement("button");
 saveButtonZone.textContent = "Save game";
@@ -167,7 +176,7 @@ function createModal() {
    modalContent.classList.add("modal-content");
 
    const message = document.createElement("p");
-   message.textContent = `Отлично! Вы решили нонограмму за ${seconds} секунд!`;
+   message.textContent = `Отлично! Вы решили нонограмму за ${formatTimer(seconds)} !`;
    stopTimer();
 
    const playAgainBtn = document.createElement("button");
