@@ -24,9 +24,13 @@ body {
 .cell {
    width: 40px;
    height: 40px;
-   border: 1px solid #ccc;
+   border: 1px solid #cccccc;
    background-color: white;
    position: relative;
+   transition: 0.3s;
+}
+.cell:hover {
+   border: #000 1px solid;
 }
 
 .cell.black {
@@ -130,4 +134,22 @@ body {
    border: 2px solid salmon;
    border-radius: 10px;
    padding: 10px 20px;
+}
+
+.button-container button {
+   background-color: slategray;
+   color: #fff;
+   padding: 10px 20px;
+   font-size: 16px;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   margin: 5px;
+   transition: background-color 0.3s ease;
+   opacity: 0.6;
+   transition: 0.6s;
+}
+
+.button-container button:hover {
+   opacity: 1;
 }
