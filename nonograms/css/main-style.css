@@ -88,7 +88,7 @@ body {
    width: 1px;
    background-color: salmon;
    height: 100%;
-   right: 0;
+   left: 0;
 }
 .podsk2::before {
    content: "";
@@ -96,6 +96,18 @@ body {
    width: 1px;
    background-color: salmon;
    height: 100%;
+   right: 0;
+}
+.podsk2:nth-child(5n):not(:last-child)::before {
+   width: 2px;
+   height: 10500%;
+   bottom: -10400%;
+   right: 0;
+}
+.podsk2:nth-child(5n + 6):not(:last-child)::before {
+   width: 2px;
+   height: 10500%;
+   bottom: -10400%;
    left: 0;
 }
 .left-podskazki {
@@ -128,13 +140,26 @@ body {
    width: 100%;
    background-color: salmon;
 }
+.podsk1:nth-child(5n + 6):not(:last-child)::before {
+   height: 2px;
+   width: 15100%;
+   right: -15000%;
+   bottom: 0;
+}
+.podsk1:nth-child(5n):not(:last-child)::after {
+   height: 2px;
+   width: 15100%;
+   right: -15000%;
+   bottom: 0;
+}
+
 .row-container {
    display: flex;
    flex-direction: column;
    justify-content: space-evenly;
 }
 
-#nonograma .row-container:nth-child(5n):not(:last-child) .cell:nth-child(1)::before {
+/* #nonograma .row-container:nth-child(5n):not(:last-child) .cell:nth-child(1)::before {
    content: "";
    position: absolute;
    top: -300%;
@@ -152,7 +177,7 @@ body {
    width: 140%;
    height: 2px;
    background-color: salmon;
-}
+} */
 
 .modal {
    position: fixed;
@@ -290,4 +315,5 @@ body {
 }
 .game-container {
    margin: 2%;
+   overflow: hidden;
 }

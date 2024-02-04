@@ -399,7 +399,7 @@ function playAgain() {
    renderNonogram(nanObj);
 }
 function playAgainSave() {
-
+   nonograma.style.gridTemplateColumns = `repeat(${saveObj.widthP}, 1fr)`;
    const topPodskazki = document.querySelector(".top-podskazri");
    const leftPodskazki = document.querySelector(".left-podskazki");
 
@@ -418,7 +418,7 @@ function restartGame() {
    resetTimer();
 }
 function saveGame() {
-   saveObj = { ...nanObj }; 
+   saveObj = { ...nanObj };
    saveObj.sost = newArr;
    saveObj.timer = seconds;
    let newObJJSON = JSON.stringify(saveObj);
@@ -430,6 +430,7 @@ function saveGame() {
 function showSolution() {
    console.log("Show game");
    nonograma.innerHTML = "";
+   console.log(nanObj);
    renderNonogramForSol();
    //    const mask = document.createElement("div");
    //    mask.classList.add("mask");
