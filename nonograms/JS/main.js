@@ -120,22 +120,45 @@ nonogramaCont.id = "nonogramaCont";
 const nonograma = document.createElement("div");
 nonograma.id = "nonograma";
 
-const muteCheckbox = document.createElement("input");
-muteCheckbox.type = "checkbox";
-muteCheckbox.id = "muteCheckbox";
+const muteSwitch = document.createElement('div');
+muteSwitch.classList.add('toggle-switch');
+muteSwitch.dataset.mute = 'false'; 
 
-document.body.appendChild(muteCheckbox);
-const muteLabel = document.createElement("label");
-muteLabel.textContent = "Переключить звук";
-muteLabel.htmlFor = "muteCheckbox";
+document.body.appendChild(muteSwitch);
+const muteLabel = document.createElement('label');
+muteLabel.textContent = 'Переключить звук';
+muteLabel.htmlFor = 'muteSwitch';
 document.body.appendChild(muteLabel);
+
 function toggleMute() {
-   winSound.volume = muteCheckbox.checked ? 0 : 1;
-   deleteSound.volume = muteCheckbox.checked ? 0 : 1;
-   xSound.volume = muteCheckbox.checked ? 0 : 1;
-   bSound.volume = muteCheckbox.checked ? 0 : 1;
+  const isMuted = muteSwitch.dataset.mute === 'true';
+  muteSwitch.dataset.mute = isMuted ? 'false' : 'true';
+
+  winSound.volume = isMuted ? 1 : 0;
+  deleteSound.volume = isMuted ? 1 : 0;
+  xSound.volume = isMuted ? 1 : 0;
+  bSound.volume = isMuted ? 1 : 0;
 }
-muteCheckbox.addEventListener("change", toggleMute);
+
+muteSwitch.addEventListener('click', toggleMute);
+
+const themeSwitch = document.createElement("div");
+themeSwitch.classList.add("toggle-switch");
+themeSwitch.dataset.theme = "light"; 
+
+document.body.appendChild(themeSwitch);
+const themeLabel = document.createElement("label");
+themeLabel.textContent = "Переключить тему";
+themeLabel.htmlFor = "themeSwitch";
+document.body.appendChild(themeLabel);
+
+function toggleTheme() {
+   const body = document.body;
+
+   themeSwitch.dataset.theme = themeSwitch.dataset.theme === "light" ? "dark" : "light";
+   body.classList.toggle("dark-theme", themeSwitch.dataset.theme === "dark");
+}
+themeSwitch.addEventListener("click", toggleTheme);
 
 function podskazkiCreate() {
    topPodskazki.innerHTML = "";

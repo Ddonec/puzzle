@@ -181,3 +181,31 @@ body {
 .button-container button:hover {
    opacity: 1;
 }
+
+
+
+.toggle-switch {
+    width: 60px;
+    height: 30px;
+    background-color: #ddd;
+    border-radius: 15px;
+    position: relative;
+    cursor: pointer;
+  }
+  
+  .toggle-switch::before {
+    content: '';
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 50%;
+    transition: transform 0.3s;
+  }
+  
+  .toggle-switch[data-theme="dark"]::before {
+    transform: translateX(100%);
+  }
+  .toggle-switch[data-mute="true"]::before {
+    transform: translateX(100%);
+  }
