@@ -29,6 +29,7 @@ let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
 let seconds = 0;
+let saveObj = nan1;
 
 function startTimer() {
    timer = setInterval(() => {
@@ -163,49 +164,50 @@ function toggleTheme() {
 }
 themeSwitch.addEventListener("click", toggleTheme);
 
-function podskazkiCreate() {
+function podskazkiCreate({ podsk2, podsk1 }) {
    topPodskazki.innerHTML = "";
    leftPodskazki.innerHTML = "";
-   for (const value of nanObj.podsk2) {
-      const podsk2 = document.createElement("div");
-      podsk2.classList.add("podsk2");
+
+   for (const value of podsk2) {
+      const podsk2Element = document.createElement("div");
+      podsk2Element.classList.add("podsk2");
 
       if (Array.isArray(value)) {
-         podsk2.innerHTML = value.join("<br>");
+         podsk2Element.innerHTML = value.join("<br>");
       } else {
-         podsk2.textContent = value;
+         podsk2Element.textContent = value;
       }
 
-      topPodskazki.appendChild(podsk2);
+      topPodskazki.appendChild(podsk2Element);
    }
 
-   for (const value of nanObj.podsk1) {
-      const podsk1 = document.createElement("div");
-      podsk1.classList.add("podsk1");
+   for (const value of podsk1) {
+      const podsk1Element = document.createElement("div");
+      podsk1Element.classList.add("podsk1");
 
       if (Array.isArray(value)) {
-         podsk1.textContent = value.join(" ");
+         podsk1Element.textContent = value.join(" ");
       } else {
-         podsk1.textContent = value;
+         podsk1Element.textContent = value;
       }
 
-      leftPodskazki.appendChild(podsk1);
+      leftPodskazki.appendChild(podsk1Element);
    }
 }
 
-podskazkiCreate();
+podskazkiCreate(nanObj);
 
-function renderNonogram() {
-   for (let i = 0; i < nanObj.size; i++) {
+function renderNonogram({ size, sost }) {
+   for (let i = 0; i < size; i++) {
       const rowContainer = document.createElement("div");
       rowContainer.classList.add("row-container");
 
-      for (let j = 0; j < nanObj.size; j++) {
+      for (let j = 0; j < size; j++) {
          const cell = document.createElement("div");
          cell.classList.add("cell");
-         cell.classList.add(nanObj.sost[i * nanObj.size + j] === 1 ? "black" : nanObj.sost[i * nanObj.size + j] === 2 ? "x" : "white");
+         cell.classList.add(sost[i * size + j] === 1 ? "black" : sost[i * size + j] === 2 ? "x" : "white");
 
-         if (nanObj.sost[i * nanObj.size + j] === 2) {
+         if (sost[i * size + j] === 2) {
             cell.textContent = "X";
          } else {
             cell.textContent = "";
@@ -222,7 +224,7 @@ function renderNonogram() {
       nonograma.appendChild(rowContainer);
    }
 }
-renderNonogram();
+renderNonogram(nanObj);
 const gameContainer = document.createElement("section");
 gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.widthP + 2})`;
 
@@ -376,52 +378,68 @@ function playAgain() {
    topPodskazki.textContent = "";
    leftPodskazki.textContent = "";
 
-   podskazkiCreate();
+   podskazkiCreate(nanObj);
 
    nonograma.innerHTML = "";
    nonograma.style.gridTemplateColumns = `repeat(${nanObj.size}, var(--razmer-cell))`;
 
-   renderNonogram();
+   renderNonogram(nanObj);
 }
+function playAgainSave() {
+   gameContainer.style.width = `calc(var(--razmer-cell) * ${saveObj.widthP + 2})`;
 
+   const topPodskazki = document.querySelector(".top-podskazri");
+   const leftPodskazki = document.querySelector(".left-podskazki");
+
+   topPodskazki.textContent = "";
+   leftPodskazki.textContent = "";
+
+   podskazkiCreate(saveObj);
+
+   nonograma.innerHTML = "";
+   nonograma.style.gridTemplateColumns = `repeat(${saveObj.size}, var(--razmer-cell))`;
+
+   renderNonogram(saveObj);
+}
 function restartGame() {
    console.log("restart game");
    playAgain();
    resetTimer();
 }
 function saveGame() {
-   let saveObj = { ...nanObj };
+   saveObj = { ...nanObj }; // Используем глобальную переменную
 
    saveObj.sost = newArr;
    saveObj.timer = seconds;
    let newObJJSON = JSON.stringify(saveObj);
    localStorage.setItem("saveObj", newObJJSON);
    console.log("save game");
+   console.log(saveObj);
 }
 
 function showSolution() {
    console.log("Show game");
    nonograma.innerHTML = "";
    renderNonogramForSol();
-   const mask = document.createElement("div");
-   mask.classList.add("mask");
-   gameContainer.appendChild(mask);
-   mask.addEventListener("contextmenu", (e) => {
-      e.preventDefault();
-   });
+   //    const mask = document.createElement("div");
+   //    mask.classList.add("mask");
+   //    gameContainer.appendChild(mask);
+   //    mask.addEventListener("contextmenu", (e) => {
+   //       e.preventDefault();
+   //    });
 }
 
 function loadGame() {
    resetTimer();
 
-   const nanObjJSON = localStorage.getItem("saveObj");
+   const saveObjJSON = localStorage.getItem("saveObj");
 
-   if (nanObjJSON) {
-      nanObj = JSON.parse(nanObjJSON);
-      seconds = nanObj.timer || 0;
+   if (saveObjJSON) {
+      saveObj = JSON.parse(saveObjJSON);
+      seconds = saveObj.timer || 0;
       updateTimer();
       console.log("Игра загружена");
-      playAgain();
+      playAgainSave();
       startTimer();
    } else {
       alert("Нет сохранений");
@@ -527,11 +545,6 @@ function renderNonogramForSol() {
          } else {
             cell.textContent = "";
          }
-         cell.addEventListener("click", handleCellClick);
-         cell.addEventListener("contextmenu", handleContextMenu);
-         nonograma.addEventListener("contextmenu", function (e) {
-            e.preventDefault();
-         });
 
          rowContainer.appendChild(cell);
       }
