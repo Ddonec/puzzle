@@ -21,8 +21,7 @@ body {
    color: #000;
 }
 .dark .game-container .botContainer #nonograma .row-container .cell {
-    box-shadow: inset 0 0 1px 1px #ffffff;
-
+   box-shadow: inset 0 0 1px 1px #ffffff;
 }
 #nonograma {
    display: grid;
@@ -312,3 +311,29 @@ body {
    justify-content: space-around;
 }
 
+@media (orientation: portrait) {
+   :root {
+      --razmer1: 1vw;
+      --razmer2: 4vw;
+      --razmer-cell: 50px;
+      --dark-bg: grey;
+   }
+   body {
+      flex-direction: column-reverse;
+   }
+   .button-container,
+   .control-panel {
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      height: unset;
+   }
+   label {
+      display: none;
+   }
+   .control-panel {
+      width: 55vw;
+      justify-content: space-between;
+   }
+}
