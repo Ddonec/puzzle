@@ -203,9 +203,25 @@ function updateNewArr() {
 }
 
 function WinCheck(arr1, arr2) {
-   if (arr1.every((value, index) => value === arr2[index])) {
-      console.log("you win");
+   const possArr1 = arr1.reduce((acc, val, i) => {
+      if (val === 1) {
+         acc.push(i);
+      }
+      return acc;
+   }, []);
+
+   const possArr2 = arr2.reduce((acc, val, i) => {
+      if (val === 1) {
+         acc.push(i);
+      }
+      return acc;
+   }, []);
+
+   if (JSON.stringify(possArr1) === JSON.stringify(possArr2)) {
+      console.log("успех");
       createModal();
+   } else {
+      console.log(" не успех");
    }
 }
 function createModal() {
@@ -284,8 +300,8 @@ function loadGame() {
       seconds = nanObj.timer || 0;
       updateTimer();
       console.log("Игра загружена");
-        playAgain();
-        startTimer();
+      playAgain();
+      startTimer();
       return seconds;
    } else {
       console.log("Сохраненной игры не найдено");
