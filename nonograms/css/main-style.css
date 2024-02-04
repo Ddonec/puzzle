@@ -2,14 +2,20 @@
    --razmer1: 20px;
    --razmer2: 40px;
    --razmer-cell: 50px;
+   --dark-bg: rgba(151, 116, 157, 0.172);
 }
 
 body {
    display: flex;
-   flex-direction: column;
    align-items: center;
+   background-color: white;
+   justify-content: center;
+   height: 100dvh;
+   width: 100vw;
 }
-
+.dark {
+   background-color: var(--dark-bg);
+}
 #nonograma {
    display: grid;
    grid-template-columns: repeat(5, var(--razmer-cell));
@@ -58,10 +64,9 @@ body {
    display: flex;
    flex-wrap: wrap;
    position: relative;
-   /* width: calc(var(--razmer-cell) * 6 + 10px); */
-   /* row-gap: 10px; */
-   margin: 20px 0 100px;
+   margin: 2%;
    overflow: hidden;
+   flex-shrink: 0;
 }
 
 .square-sol {
@@ -164,6 +169,11 @@ body {
    padding: 10px 20px;
 }
 
+.button-container {
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+}
 .button-container button {
    background-color: slategray;
    color: #fff;
@@ -182,30 +192,65 @@ body {
    opacity: 1;
 }
 
-
-
 .toggle-switch {
-    width: 60px;
-    height: 30px;
-    background-color: #ddd;
-    border-radius: 15px;
-    position: relative;
-    cursor: pointer;
-  }
-  
-  .toggle-switch::before {
-    content: '';
-    position: absolute;
-    width: 50%;
-    height: 100%;
-    background-color: #fff;
-    border-radius: 50%;
-    transition: transform 0.3s;
-  }
-  
-  .toggle-switch[data-theme="dark"]::before {
-    transform: translateX(100%);
-  }
-  .toggle-switch[data-mute="true"]::before {
-    transform: translateX(100%);
-  }
+   width: 60px;
+   height: 30px;
+   background-color: green;
+   border-radius: 15px;
+   position: relative;
+   cursor: pointer;
+   box-shadow: inset;
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-switch::before {
+   content: "";
+   position: absolute;
+   width: 40%;
+   aspect-ratio: 1;
+   background-color: #fff;
+   border-radius: 50%;
+   transition: transform 0.3s;
+   border: 1px solid black;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 5%;
+}
+
+.toggle-theme-switch {
+   width: 60px;
+   height: 30px;
+   background-color: grey;
+   border-radius: 15px;
+   position: relative;
+   cursor: pointer;
+   box-shadow: inset;
+   box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.toggle-theme-switch::before {
+   content: "";
+   position: absolute;
+   width: 40%;
+   aspect-ratio: 1;
+   background-color: #fff;
+   border-radius: 50%;
+   transition: transform 0.3s;
+   border: 1px solid black;
+   top: 50%;
+   transform: translateY(-50%);
+   left: 5%;
+}
+
+.toggle-theme-switch[data-theme="dark"]::before {
+   transform: translate(100%, -50%);
+}
+.toggle-switch[data-mute="true"]::before {
+   transform: translate(100%, -50%);
+}
+.toggle-switch[data-mute="true"] {
+   background-color: red;
+}
+.toggle-theme-switch[data-theme="dark"] {
+   background-color: white;
+}

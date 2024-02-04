@@ -28,7 +28,7 @@ function playDeleteSound() {
 let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
-let seconds = 100;
+let seconds = 0;
 
 function startTimer() {
    timer = setInterval(() => {
@@ -107,8 +107,6 @@ buttonsContainerZone.appendChild(ChoseLevelZone);
 buttonsContainerZone.appendChild(leaderBoardlZone);
 buttonsContainerZone.appendChild(randomGameZone);
 
-document.body.appendChild(timerZone);
-
 const squareSol = document.createElement("div");
 squareSol.classList.add("square-sol");
 const topPodskazki = document.createElement("div");
@@ -120,43 +118,49 @@ nonogramaCont.id = "nonogramaCont";
 const nonograma = document.createElement("div");
 nonograma.id = "nonograma";
 
-const muteSwitch = document.createElement('div');
-muteSwitch.classList.add('toggle-switch');
-muteSwitch.dataset.mute = 'false'; 
+const muteSwitch = document.createElement("div");
+muteSwitch.classList.add("toggle-switch");
+muteSwitch.dataset.mute = "false";
 
-document.body.appendChild(muteSwitch);
-const muteLabel = document.createElement('label');
-muteLabel.textContent = 'Переключить звук';
-muteLabel.htmlFor = 'muteSwitch';
-document.body.appendChild(muteLabel);
+const muteLabel = document.createElement("label");
+muteLabel.textContent = "Mute";
+muteLabel.htmlFor = "muteSwitch";
 
 function toggleMute() {
-  const isMuted = muteSwitch.dataset.mute === 'true';
-  muteSwitch.dataset.mute = isMuted ? 'false' : 'true';
+   const isMuted = muteSwitch.dataset.mute === "true";
+   muteSwitch.dataset.mute = isMuted ? "false" : "true";
 
-  winSound.volume = isMuted ? 1 : 0;
-  deleteSound.volume = isMuted ? 1 : 0;
-  xSound.volume = isMuted ? 1 : 0;
-  bSound.volume = isMuted ? 1 : 0;
+   winSound.volume = isMuted ? 1 : 0;
+   deleteSound.volume = isMuted ? 1 : 0;
+   xSound.volume = isMuted ? 1 : 0;
+   bSound.volume = isMuted ? 1 : 0;
 }
 
-muteSwitch.addEventListener('click', toggleMute);
+muteSwitch.addEventListener("click", toggleMute);
 
 const themeSwitch = document.createElement("div");
-themeSwitch.classList.add("toggle-switch");
-themeSwitch.dataset.theme = "light"; 
+themeSwitch.classList.add("toggle-theme-switch");
+themeSwitch.dataset.theme = "light";
 
-document.body.appendChild(themeSwitch);
 const themeLabel = document.createElement("label");
-themeLabel.textContent = "Переключить тему";
+themeLabel.textContent = "Theme";
 themeLabel.htmlFor = "themeSwitch";
-document.body.appendChild(themeLabel);
+
+const controlPanel = document.createElement("div");
+controlPanel.classList.add("control-panel");
+
+controlPanel.appendChild(muteSwitch);
+controlPanel.appendChild(muteLabel);
+controlPanel.appendChild(themeSwitch);
+controlPanel.appendChild(themeLabel);
+controlPanel.appendChild(timerZone);
+
 
 function toggleTheme() {
    const body = document.body;
 
    themeSwitch.dataset.theme = themeSwitch.dataset.theme === "light" ? "dark" : "light";
-   body.classList.toggle("dark-theme", themeSwitch.dataset.theme === "dark");
+   body.classList.toggle("dark", themeSwitch.dataset.theme === "dark");
 }
 themeSwitch.addEventListener("click", toggleTheme);
 
@@ -529,3 +533,4 @@ function renderNonogramForSol() {
       nonograma.appendChild(rowContainer);
    }
 }
+document.body.appendChild(controlPanel);
