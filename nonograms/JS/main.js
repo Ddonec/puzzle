@@ -349,15 +349,22 @@ function createModal() {
 
    const chooseLevelBtns = document.createElement("button");
    chooseLevelBtns.textContent = "Choose Level";
+   const randomGameBtns = document.createElement("button");
+   randomGameBtns.textContent = "Random game";
 
    modalContent.appendChild(message);
    modalContent.appendChild(chooseLevelBtns);
+   modalContent.appendChild(randomGameBtns);
    modal.appendChild(modalContent);
    document.body.appendChild(modal);
    document.body.appendChild(fill);
    chooseLevelBtns.addEventListener("click", () => {
       ChoseLevel();
       closeModal();
+   });
+   randomGameBtns.addEventListener("click", () => {
+      closeModal();
+      randomGame();
    });
 }
 
