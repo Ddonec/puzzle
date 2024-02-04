@@ -120,6 +120,23 @@ nonogramaCont.id = "nonogramaCont";
 const nonograma = document.createElement("div");
 nonograma.id = "nonograma";
 
+const muteCheckbox = document.createElement("input");
+muteCheckbox.type = "checkbox";
+muteCheckbox.id = "muteCheckbox";
+
+document.body.appendChild(muteCheckbox);
+const muteLabel = document.createElement("label");
+muteLabel.textContent = "Переключить звук";
+muteLabel.htmlFor = "muteCheckbox";
+document.body.appendChild(muteLabel);
+function toggleMute() {
+   winSound.volume = muteCheckbox.checked ? 0 : 1;
+   deleteSound.volume = muteCheckbox.checked ? 0 : 1;
+   xSound.volume = muteCheckbox.checked ? 0 : 1;
+   bSound.volume = muteCheckbox.checked ? 0 : 1;
+}
+muteCheckbox.addEventListener("change", toggleMute);
+
 function podskazkiCreate() {
    topPodskazki.innerHTML = "";
    leftPodskazki.innerHTML = "";
