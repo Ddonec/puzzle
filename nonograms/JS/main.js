@@ -29,7 +29,6 @@ let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
 let seconds = 0;
-let saveObj = {};
 
 function startTimer() {
    timer = setInterval(() => {
@@ -404,6 +403,12 @@ function showSolution() {
    console.log("Show game");
    nonograma.innerHTML = "";
    renderNonogramForSol();
+   const mask = document.createElement("div");
+   mask.classList.add("mask");
+   gameContainer.appendChild(mask);
+   mask.addEventListener("contextmenu", (e) => {
+      e.preventDefault();
+   });
 }
 
 function loadGame() {
