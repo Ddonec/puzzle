@@ -97,7 +97,6 @@ body {
    flex-direction: row-reverse;
    align-items: center;
    font-size: small;
-   justify-content: space-around;
 }
 .row-container {
    display: flex;

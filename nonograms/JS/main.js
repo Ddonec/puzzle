@@ -313,6 +313,8 @@ function saveGame() {
 
 function showSolution() {
    console.log("Show game");
+   nonograma.innerHTML = "";
+   renderNonogramForSol();
 }
 
 function loadGame() {
@@ -350,4 +352,36 @@ function leaderBoard() {
 }
 function randomGame() {
    console.log("randomGame");
+   const randomIndex = Math.floor(Math.random() * arrOfMystery.length);
+   nanObj = arrOfMystery[randomIndex];
+   playAgain();
+   resetTimer();
+}
+
+function renderNonogramForSol() {
+   for (let i = 0; i < nanObj.size; i++) {
+      const rowContainer = document.createElement("div");
+      rowContainer.classList.add("row-container");
+
+      for (let j = 0; j < nanObj.size; j++) {
+         const cell = document.createElement("div");
+         cell.classList.add("cell");
+         cell.classList.add(nanObj.sol[i * nanObj.size + j] === 1 ? "black" : nanObj.sol[i * nanObj.size + j] === 2 ? "x" : "white");
+
+         if (nanObj.sol[i * nanObj.size + j] === 2) {
+            cell.textContent = "X";
+         } else {
+            cell.textContent = "";
+         }
+         cell.addEventListener("click", handleCellClick);
+         cell.addEventListener("contextmenu", handleContextMenu);
+         nonograma.addEventListener("contextmenu", function (e) {
+            e.preventDefault();
+         });
+
+         rowContainer.appendChild(cell);
+      }
+
+      nonograma.appendChild(rowContainer);
+   }
 }
