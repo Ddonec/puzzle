@@ -1,7 +1,7 @@
 export const nan1 = {
    task: 'Загадка 1',
    size: 5,
-   widthP: 4,
+   widthP: 5,
    sost: Array(25).fill(0),
    sol: [1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
    podsk1: [1, 1, 1, 1, 1],
@@ -12,7 +12,7 @@ export const nan1 = {
 export const nan2 = {
    task: 'Загадка 2',
    size: 5,
-   widthP: 4,
+   widthP: 5,
 
    sost: Array(25).fill(0),
    sol: [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
@@ -24,7 +24,7 @@ export const nan2 = {
 export const nan3 = {
    task: 'Загадка 3',
    size: 5,
-   widthP: 4,
+   widthP: 5,
 
    sost: Array(25).fill(0),
    sol: [0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 1, 1, 1, 1, 1, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0],
@@ -35,7 +35,7 @@ export const nan3 = {
 export const nan4 = {
    task: 'Загадка 4',
    size: 5,
-   widthP: 4,
+   widthP: 5,
 
    sost: Array(25).fill(0),
    sol: [1, 0, 1, 0, 1, 0, 1, 1, 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0, 1, 0, 1],

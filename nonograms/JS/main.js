@@ -226,14 +226,22 @@ function renderNonogram({ size, sost }) {
 }
 renderNonogram(nanObj);
 const gameContainer = document.createElement("section");
-gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.widthP + 2})`;
 
 gameContainer.classList.add("game-container");
-gameContainer.appendChild(squareSol);
-gameContainer.appendChild(topPodskazki);
-gameContainer.appendChild(leftPodskazki);
-nonogramaCont.appendChild(nonograma);
-gameContainer.appendChild(nonogramaCont);
+const topContainer = document.createElement("div");
+topContainer.classList.add("topContainer");
+const botContainer = document.createElement("div");
+botContainer.classList.add("botContainer");
+
+topContainer.appendChild(squareSol);
+topContainer.appendChild(topPodskazki);
+gameContainer.appendChild(topContainer);
+
+botContainer.appendChild(leftPodskazki);
+botContainer.appendChild(nonograma);
+gameContainer.appendChild(botContainer);
+
+// gameContainer.appendChild(nonogramaCont);
 
 document.body.appendChild(gameContainer);
 
@@ -377,8 +385,7 @@ function closeModal() {
    resetTimer();
 }
 function playAgain() {
-   gameContainer.style.width = `calc(var(--razmer-cell) * ${nanObj.widthP + 2})`;
-
+   nonograma.style.gridTemplateColumns = `repeat(${nanObj.widthP}, 1fr)`;
    const topPodskazki = document.querySelector(".top-podskazri");
    const leftPodskazki = document.querySelector(".left-podskazki");
 
@@ -388,12 +395,10 @@ function playAgain() {
    podskazkiCreate(nanObj);
 
    nonograma.innerHTML = "";
-   nonograma.style.gridTemplateColumns = `repeat(${nanObj.size}, var(--razmer-cell))`;
 
    renderNonogram(nanObj);
 }
 function playAgainSave() {
-   gameContainer.style.width = `calc(var(--razmer-cell) * ${saveObj.widthP + 2})`;
 
    const topPodskazki = document.querySelector(".top-podskazri");
    const leftPodskazki = document.querySelector(".left-podskazki");
@@ -404,7 +409,6 @@ function playAgainSave() {
    podskazkiCreate(saveObj);
 
    nonograma.innerHTML = "";
-   nonograma.style.gridTemplateColumns = `repeat(${saveObj.size}, var(--razmer-cell))`;
 
    renderNonogram(saveObj);
 }
@@ -414,8 +418,7 @@ function restartGame() {
    resetTimer();
 }
 function saveGame() {
-   saveObj = { ...nanObj }; // Используем глобальную переменную
-
+   saveObj = { ...nanObj }; 
    saveObj.sost = newArr;
    saveObj.timer = seconds;
    let newObJJSON = JSON.stringify(saveObj);

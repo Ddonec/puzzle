@@ -1,6 +1,6 @@
 :root {
    --razmer1: 20px;
-   --razmer2: 40px;
+   --razmer2: 2vw;
    --razmer-cell: 50px;
    --dark-bg: rgba(151, 116, 157, 0.172);
 }
@@ -18,25 +18,18 @@ body {
 }
 #nonograma {
    display: grid;
-   grid-template-columns: repeat(5, var(--razmer-cell));
-   /* grid-template-rows: repeat(5, var(--razmer-cell)); */
-   gap: 0px;
-   /* width: calc(var(--razmer-cell) * 5); */
+   grid-template-columns: repeat(5, 1fr);
    border: 5px solid salmon;
-   justify-items: center;
-   /* overflow: hidden; */
-   /* position: absolute; */
-   height: 100%;
 }
 #nonogramaCont {
-   aspect-ratio: 1;
+   /* aspect-ratio: 1; */
    position: relative;
 }
 
 .cell {
-   width: 40px;
-   height: 40px;
-   border: 1px solid #cccccc;
+   width: var(--razmer2);
+   height: var(--razmer2);
+   box-shadow: inset 0 0 1px 1px #808080;
    background-color: white;
    position: relative;
    transition: 0.3s;
@@ -47,9 +40,10 @@ body {
    font-family: monospace;
    font-weight: bold;
    cursor: default;
+   margin: calc(var(--razmer2) / 10);
 }
 .cell:hover {
-   border: #000 1px solid;
+   box-shadow: #000 1px solid;
 }
 
 .cell.black {
@@ -60,14 +54,6 @@ body {
    background-color: rgb(184, 150, 150);
 }
 
-.game-container {
-   display: flex;
-   flex-wrap: wrap;
-   position: relative;
-   margin: 2%;
-   overflow: hidden;
-   flex-shrink: 0;
-}
 .mask {
    position: absolute;
    width: 100%;
@@ -81,37 +67,66 @@ body {
 
 .square-sol {
    background: gray;
-   /* width: var(--razmer-cell);
-   height: var(--razmer-cell); */
-   width: 10%;
-   aspect-ratio: 1;
 }
 .top-podskazri {
    display: flex;
-   /* width: calc(var(--razmer-cell) * 5); */
-   width: 90%;
+   padding: 0 5px;
+   justify-content: space-around;
 }
 .podsk2 {
-   width: var(--razmer-cell);
    display: flex;
    justify-content: center;
    align-items: flex-end;
    font-size: small;
    text-align: center;
+   width: calc(var(--razmer2) + (var(--razmer2) / 5));
+   position: relative;
+}
+.podsk2::after {
+   content: "";
+   position: absolute;
+   width: 1px;
+   background-color: salmon;
+   height: 100%;
+   right: 0;
+}
+.podsk2::before {
+   content: "";
+   position: absolute;
+   width: 1px;
+   background-color: salmon;
+   height: 100%;
+   left: 0;
 }
 .left-podskazki {
    display: flex;
    flex-direction: column;
-   /* width: var(--razmer-cell); */
-   width: 10%;
-   padding-top: 10px;
+   padding: 5px 0;
+   justify-content: space-around;
 }
 .podsk1 {
-   height: var(--razmer-cell);
    display: flex;
    flex-direction: row-reverse;
    align-items: center;
    font-size: small;
+   height: calc(var(--razmer2) + var(--razmer2) / 5);
+   position: relative;
+}
+.podsk1::after {
+   content: "";
+   position: absolute;
+   bottom: 0;
+   height: 1px;
+   width: 100%;
+   background-color: salmon;
+}
+.podsk1::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   height: 1px;
+   width: 100%;
+   background-color: salmon;
 }
 .row-container {
    display: flex;
@@ -133,9 +148,9 @@ body {
    content: "";
    position: absolute;
    bottom: -18%;
-   left: -300%;
-   width: 420%;
-   height: 4px;
+   left: -14%;
+   width: 140%;
+   height: 2px;
    background-color: salmon;
 }
 
@@ -162,6 +177,7 @@ body {
    font-size: 16px;
    cursor: pointer;
    border-radius: 4px;
+   margin: 10px;
 }
 .fill {
    position: fixed;
@@ -263,4 +279,15 @@ body {
 }
 .toggle-theme-switch[data-theme="dark"] {
    background-color: white;
+}
+
+.topContainer,
+.botContainer {
+   display: flex;
+}
+.topContainer {
+   flex-direction: row-reverse;
+}
+.game-container {
+   margin: 2%;
 }
