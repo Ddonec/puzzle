@@ -6,6 +6,25 @@ import { nan4 } from "./mystery.js";
 import { nan11 } from "./mystery.js";
 import { nan15 } from "./mystery.js";
 
+const winSound = new Audio("assets/sounds/win.mp3");
+const deleteSound = new Audio("assets/sounds/del.mp3");
+const xSound = new Audio("assets/sounds/x.mp3");
+const bSound = new Audio("assets/sounds/b.mp3");
+function playBSound() {
+   bSound.currentTime = 0;
+   bSound.playbackRate = 2;
+   bSound.play();
+}
+function playXSound() {
+   xSound.currentTime = 0;
+   xSound.playbackRate = 2;
+   xSound.play();
+}
+function playDeleteSound() {
+   deleteSound.currentTime = 0;
+   deleteSound.playbackRate = 2;
+   deleteSound.play();
+}
 let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
@@ -175,9 +194,15 @@ document.body.appendChild(gameContainer);
 
 function handleCellClick(event) {
    if (event.button === 0) {
-      this.classList.toggle("black");
-      this.classList.remove("x");
-      this.textContent = "";
+      if (this.classList.contains("black")) {
+         this.classList.remove("black");
+         playDeleteSound();
+      } else {
+         this.classList.add("black");
+         this.classList.remove("x");
+         this.textContent = "";
+         playBSound();
+      }
       updateNewArr();
       if (!timer) {
          startTimer();
@@ -193,10 +218,12 @@ function handleContextMenu(event) {
    if (hasXClass) {
       this.classList.remove("x");
       this.textContent = "";
+      playDeleteSound();
    } else {
       this.classList.toggle("x");
       this.classList.remove("black");
       this.textContent = "X";
+      playXSound();
    }
 
    updateNewArr();
@@ -241,6 +268,7 @@ function WinCheck(arr1, arr2) {
 
    if (JSON.stringify(possArr1) === JSON.stringify(possArr2)) {
       console.log("успех");
+      winSound.play();
 
       const taskName = nanObj.task;
       const tasksize = nanObj.size;
