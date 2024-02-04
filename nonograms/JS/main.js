@@ -1,13 +1,15 @@
 import { arrOfMystery } from "./mystery.js";
 import { nan1 } from "./mystery.js";
 import { nan2 } from "./mystery.js";
+import { nan3 } from "./mystery.js";
+import { nan4 } from "./mystery.js";
 import { nan11 } from "./mystery.js";
 import { nan15 } from "./mystery.js";
 
 let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
-let seconds = 10;
+let seconds = 0;
 
 function startTimer() {
    timer = setInterval(() => {
@@ -72,6 +74,10 @@ const leaderBoardlZone = document.createElement("button");
 leaderBoardlZone.textContent = "Leader board";
 leaderBoardlZone.onclick = leaderBoard;
 
+const randomGameZone = document.createElement("button");
+randomGameZone.textContent = "Random game";
+randomGameZone.onclick = randomGame;
+
 document.body.appendChild(buttonsContainerZone);
 
 buttonsContainerZone.appendChild(restartButtonZone);
@@ -80,6 +86,7 @@ buttonsContainerZone.appendChild(showSolutionZone);
 buttonsContainerZone.appendChild(loadGameZone);
 buttonsContainerZone.appendChild(ChoseLevelZone);
 buttonsContainerZone.appendChild(leaderBoardlZone);
+buttonsContainerZone.appendChild(randomGameZone);
 
 document.body.appendChild(timerZone);
 
@@ -95,20 +102,35 @@ const nonograma = document.createElement("div");
 nonograma.id = "nonograma";
 
 function podskazkiCreate() {
+   topPodskazki.innerHTML = "";
+   leftPodskazki.innerHTML = "";
    for (const value of nanObj.podsk2) {
       const podsk2 = document.createElement("div");
       podsk2.classList.add("podsk2");
-      podsk2.textContent = value;
+
+      if (Array.isArray(value)) {
+         podsk2.innerHTML = value.join("<br>");
+      } else {
+         podsk2.textContent = value;
+      }
+
       topPodskazki.appendChild(podsk2);
    }
 
    for (const value of nanObj.podsk1) {
       const podsk1 = document.createElement("div");
       podsk1.classList.add("podsk1");
-      podsk1.textContent = value;
+
+      if (Array.isArray(value)) {
+         podsk1.textContent = value.join(" ");
+      } else {
+         podsk1.textContent = value;
+      }
+
       leftPodskazki.appendChild(podsk1);
    }
 }
+
 podskazkiCreate();
 
 function renderNonogram() {
@@ -292,6 +314,7 @@ function saveGame() {
 function showSolution() {
    console.log("Show game");
 }
+
 function loadGame() {
    const nanObjJSON = localStorage.getItem("newObJ");
 
@@ -324,4 +347,7 @@ function leaderBoard() {
    nanObj = JSON.parse(nanObjJSON);
    seconds = nanObj.timer;
    console.log(seconds);
+}
+function randomGame() {
+   console.log("randomGame");
 }

@@ -81,6 +81,8 @@ body {
    display: flex;
    justify-content: center;
    align-items: flex-end;
+   font-size: small;
+   text-align: center;
 }
 .left-podskazki {
    display: flex;
@@ -94,6 +96,8 @@ body {
    display: flex;
    flex-direction: row-reverse;
    align-items: center;
+   font-size: small;
+   justify-content: space-around;
 }
 .row-container {
    display: flex;
