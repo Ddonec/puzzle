@@ -29,6 +29,7 @@ let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
 let seconds = 0;
+let saveObj = {};
 
 function startTimer() {
    timer = setInterval(() => {
@@ -154,7 +155,6 @@ controlPanel.appendChild(muteLabel);
 controlPanel.appendChild(themeSwitch);
 controlPanel.appendChild(themeLabel);
 controlPanel.appendChild(timerZone);
-
 
 function toggleTheme() {
    const body = document.body;
@@ -346,15 +346,18 @@ function createModal() {
    message.textContent = `Отлично! Вы решили нонограмму за ${formatTimer(seconds)} !`;
    stopTimer();
 
-   const playAgainBtn = document.createElement("button");
-   playAgainBtn.textContent = "Сыграть еще раз";
-   playAgainBtn.addEventListener("click", closeModal);
+   const chooseLevelBtns = document.createElement("button");
+   chooseLevelBtns.textContent = "Choose Level";
 
    modalContent.appendChild(message);
-   modalContent.appendChild(playAgainBtn);
+   modalContent.appendChild(chooseLevelBtns);
    modal.appendChild(modalContent);
    document.body.appendChild(modal);
    document.body.appendChild(fill);
+   chooseLevelBtns.addEventListener("click", () => {
+      ChoseLevel();
+      closeModal();
+   });
 }
 
 function closeModal() {
@@ -388,12 +391,12 @@ function restartGame() {
    resetTimer();
 }
 function saveGame() {
-   let newObJ = { ...nanObj };
+   let saveObj = { ...nanObj };
 
-   newObJ.sost = newArr;
-   newObJ.timer = seconds;
-   let newObJJSON = JSON.stringify(newObJ);
-   localStorage.setItem("newObJ", newObJJSON);
+   saveObj.sost = newArr;
+   saveObj.timer = seconds;
+   let newObJJSON = JSON.stringify(saveObj);
+   localStorage.setItem("saveObj", newObJJSON);
    console.log("save game");
 }
 
@@ -406,7 +409,7 @@ function showSolution() {
 function loadGame() {
    resetTimer();
 
-   const nanObjJSON = localStorage.getItem("newObJ");
+   const nanObjJSON = localStorage.getItem("saveObj");
 
    if (nanObjJSON) {
       nanObj = JSON.parse(nanObjJSON);
@@ -415,10 +418,8 @@ function loadGame() {
       console.log("Игра загружена");
       playAgain();
       startTimer();
-      return seconds;
    } else {
-      console.log("Сохраненной игры не найдено");
-      return null;
+      alert("Нет сохранений");
    }
 }
 
