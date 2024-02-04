@@ -9,7 +9,7 @@ import { nan15 } from "./mystery.js";
 let nanObj = nan1;
 let newArr = [...nanObj.sost];
 let timer = false;
-let seconds = 0;
+let seconds = 100;
 
 function startTimer() {
    timer = setInterval(() => {
@@ -241,9 +241,23 @@ function WinCheck(arr1, arr2) {
 
    if (JSON.stringify(possArr1) === JSON.stringify(possArr2)) {
       console.log("успех");
+
+      const taskName = nanObj.task;
+      const tasksize = nanObj.size;
+      const timeSpent = seconds;
+
+      const currentLeaderboardJSON = localStorage.getItem("leaderboard");
+      const currentLeaderboard = currentLeaderboardJSON ? JSON.parse(currentLeaderboardJSON) : [];
+
+      currentLeaderboard.push({ task: taskName, time: timeSpent, size: tasksize });
+
+      currentLeaderboard.sort((a, b) => a.time - b.time);
+
+      localStorage.setItem("leaderboard", JSON.stringify(currentLeaderboard));
+
       createModal();
    } else {
-      console.log(" не успех");
+      console.log("не успех");
    }
 }
 function createModal() {
@@ -318,6 +332,8 @@ function showSolution() {
 }
 
 function loadGame() {
+   resetTimer();
+
    const nanObjJSON = localStorage.getItem("newObJ");
 
    if (nanObjJSON) {
@@ -343,12 +359,47 @@ function ChoseLevel() {
    resetTimer();
 }
 function leaderBoard() {
-   const nanObjJSON = localStorage.getItem("newObJ");
-
    console.log("Leaderboard");
-   nanObj = JSON.parse(nanObjJSON);
-   seconds = nanObj.timer;
-   console.log(seconds);
+
+   const leaderboardJSON = localStorage.getItem("leaderboard");
+   const leaderboard = leaderboardJSON ? JSON.parse(leaderboardJSON) : [];
+
+   const fill = document.createElement("div");
+   fill.classList.add("fill");
+
+   const modal = document.createElement("div");
+   modal.classList.add("modal");
+
+   const modalContent = document.createElement("div");
+   modalContent.classList.add("modal-content");
+
+   const title = document.createElement("h2");
+   title.textContent = "Leaderboard";
+   modalContent.appendChild(title);
+
+   for (let i = 0; i < Math.min(5, leaderboard.length); i++) {
+      const result = leaderboard[i];
+      const resultItem = document.createElement("p");
+      resultItem.textContent = `${i + 1}. Task: ${result.task}, Time: ${result.time} seconds`;
+      modalContent.appendChild(resultItem);
+   }
+   const chooseLevelBtn = document.createElement("button");
+   chooseLevelBtn.textContent = "Choose Level";
+   chooseLevelBtn.addEventListener("click", () => {
+      ChoseLevel();
+      closeModal();
+   });
+   modalContent.appendChild(chooseLevelBtn);
+   const restartBtn = document.createElement("button");
+   restartBtn.textContent = "Restart Game";
+   restartBtn.addEventListener("click", () => {
+      restartGame();
+      closeModal();
+   });
+   modalContent.appendChild(restartBtn);
+   modal.appendChild(modalContent);
+   document.body.appendChild(modal);
+   document.body.appendChild(fill);
 }
 function randomGame() {
    console.log("randomGame");
