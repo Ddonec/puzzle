@@ -351,13 +351,38 @@ function loadGame() {
 }
 
 function ChoseLevel() {
-   const levelChoice = prompt("указать номер уровня");
-   nanObj = arrOfMystery[levelChoice - 1];
+   const fill = document.createElement("div");
+   fill.classList.add("fill");
+   const modal = document.createElement("div");
+   modal.classList.add("modal");
 
-   console.log("Chose level");
+   const modalContent = document.createElement("div");
+   modalContent.classList.add("modal-content");
+   const title = document.createElement("h2");
+   title.textContent = "Choose Level";
+   modalContent.appendChild(title);
+
+   for (let i = 0; i < arrOfMystery.length; i++) {
+      const levelBtn = document.createElement("button");
+      levelBtn.textContent = `Level ${i + 1}`;
+      levelBtn.addEventListener("click", () => {
+         choseLevelBtn(i);
+         closeModal();
+      });
+      modalContent.appendChild(levelBtn);
+   }
+   modal.appendChild(modalContent);
+   document.body.appendChild(modal);
+   document.body.appendChild(fill);
+}
+
+function choseLevelBtn(levelIndex) {
+   nanObj = arrOfMystery[levelIndex];
+   console.log(`Chose level ${levelIndex + 1}`);
    playAgain();
    resetTimer();
 }
+
 function leaderBoard() {
    console.log("Leaderboard");
 
