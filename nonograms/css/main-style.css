@@ -1,8 +1,8 @@
 :root {
-   --razmer1: 20px;
+   --razmer1: 1vw;
    --razmer2: 2vw;
    --razmer-cell: 50px;
-   --dark-bg: rgba(151, 116, 157, 0.172);
+   --dark-bg: grey;
 }
 
 body {
@@ -15,6 +15,14 @@ body {
 }
 .dark {
    background-color: var(--dark-bg);
+}
+.dark .button-container button {
+   background-color: bisque;
+   color: #000;
+}
+.dark .game-container .botContainer #nonograma .row-container .cell {
+    box-shadow: inset 0 0 1px 1px #ffffff;
+
 }
 #nonograma {
    display: grid;
@@ -159,26 +167,6 @@ body {
    justify-content: space-evenly;
 }
 
-/* #nonograma .row-container:nth-child(5n):not(:last-child) .cell:nth-child(1)::before {
-   content: "";
-   position: absolute;
-   top: -300%;
-   right: -7px;
-   width: 4px;
-   height: 2500%;
-   background-color: salmon;
-}
-
-#nonograma .row-container .cell:nth-child(5n):not(:last-child)::before {
-   content: "";
-   position: absolute;
-   bottom: -18%;
-   left: -14%;
-   width: 140%;
-   height: 2px;
-   background-color: salmon;
-} */
-
 .modal {
    position: fixed;
    top: 50%;
@@ -228,7 +216,7 @@ body {
 .button-container button {
    background-color: slategray;
    color: #fff;
-   padding: 10px 20px;
+   padding: 1vh 2vh;
    font-size: 16px;
    border: none;
    border-radius: 5px;
@@ -314,6 +302,13 @@ body {
    flex-direction: row-reverse;
 }
 .game-container {
-   margin: 2%;
+   margin: 4vw;
    overflow: hidden;
 }
+.control-panel {
+   height: 33vh;
+   display: flex;
+   flex-direction: column;
+   justify-content: space-around;
+}
+
