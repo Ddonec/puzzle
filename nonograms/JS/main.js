@@ -3,7 +3,16 @@ import { nan1 } from "./mystery.js";
 import { nan2 } from "./mystery.js";
 import { nan3 } from "./mystery.js";
 import { nan4 } from "./mystery.js";
+import { nan5 } from "./mystery.js";
+import { nan6 } from "./mystery.js";
+import { nan7 } from "./mystery.js";
+import { nan8 } from "./mystery.js";
+import { nan9 } from "./mystery.js";
+import { nan10 } from "./mystery.js";
 import { nan11 } from "./mystery.js";
+import { nan12 } from "./mystery.js";
+import { nan13 } from "./mystery.js";
+import { nan14 } from "./mystery.js";
 import { nan15 } from "./mystery.js";
 
 const winSound = new Audio("assets/sounds/win.mp3");
