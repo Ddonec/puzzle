@@ -437,16 +437,9 @@ function saveGame() {
 }
 
 function showSolution() {
-   console.log("Show game");
    nonograma.innerHTML = "";
-   console.log(nanObj);
+   nonograma.style.gridTemplateColumns = `repeat(${saveObj.size}, var(--razmer-cell))`;
    renderNonogramForSol();
-   //    const mask = document.createElement("div");
-   //    mask.classList.add("mask");
-   //    gameContainer.appendChild(mask);
-   //    mask.addEventListener("contextmenu", (e) => {
-   //       e.preventDefault();
-   //    });
 }
 
 function loadGame() {
