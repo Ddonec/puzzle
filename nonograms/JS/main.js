@@ -63,7 +63,7 @@ function stopTimer() {
    clearInterval(timer);
 }
 function updateTimer() {
-   console.log(seconds);
+//    console.log(seconds);
    const time = document.querySelector(".timer");
    time.innerText = formatTimer();
 }
@@ -272,7 +272,7 @@ function handleCellClick(event) {
       if (!timer) {
          startTimer();
       }
-      console.log(newArr);
+    //   console.log(newArr);
    }
 }
 
@@ -332,7 +332,7 @@ function WinCheck(arr1, arr2) {
    }, []);
 
    if (JSON.stringify(possArr1) === JSON.stringify(possArr2)) {
-      console.log("успех");
+    //   console.log("успех");
       winSound.play();
 
       const taskName = nanObj.task;
@@ -350,7 +350,7 @@ function WinCheck(arr1, arr2) {
 
       createModal();
    } else {
-      console.log("не успех");
+    //   console.log("не успех");
    }
 }
 function createModal() {
@@ -425,7 +425,7 @@ function playAgainSave() {
    renderNonogram(saveObj);
 }
 function restartGame() {
-   console.log("restart game");
+//    console.log("restart game");
    playAgain();
    resetTimer();
 }
@@ -458,8 +458,8 @@ function saveGame() {
       extractedState.push(...rowState);
    });
 
-   console.log(extractedState);
-   console.log(nanObj.sol);
+//    console.log(extractedState);
+//    console.log(nanObj.sol);
 
    if (arrCheck(extractedState, nanObj.sol)) {
       playNSound();
@@ -469,14 +469,14 @@ function saveGame() {
       saveObj.timer = seconds;
       let newObJJSON = JSON.stringify(saveObj);
       localStorage.setItem("saveObj", newObJJSON);
-      console.log("save game");
-      console.log(saveObj);
+    //   console.log("save game");
+    //   console.log(saveObj);
    }
 }
 
 function showSolution() {
    nonograma.innerHTML = "";
-   console.log(nanObj);
+//    console.log(nanObj);
    renderNonogramForSol();
 }
 
@@ -489,7 +489,7 @@ function loadGame() {
       saveObj = JSON.parse(saveObjJSON);
       seconds = saveObj.timer || 0;
       updateTimer();
-      console.log("Игра загружена");
+    //   console.log("Игра загружена");
       playAgainSave();
       findnanObj();
       startTimer();
@@ -534,13 +534,13 @@ function ChoseLevel() {
 
 function choseLevelBtn(levelIndex) {
    nanObj = arrOfMystery[levelIndex];
-   console.log(`Chose level ${levelIndex + 1}`);
+//    console.log(`Chose level ${levelIndex + 1}`);
    playAgain();
    resetTimer();
 }
 
 function leaderBoard() {
-   console.log("Leaderboard");
+//    console.log("Leaderboard");
 
    const leaderboardJSON = localStorage.getItem("leaderboard");
    const leaderboard = leaderboardJSON ? JSON.parse(leaderboardJSON) : [];
@@ -583,7 +583,7 @@ function leaderBoard() {
    document.body.appendChild(fill);
 }
 function randomGame() {
-   console.log("randomGame");
+//    console.log("randomGame");
    const randomIndex = Math.floor(Math.random() * arrOfMystery.length);
    nanObj = arrOfMystery[randomIndex];
    playAgain();
