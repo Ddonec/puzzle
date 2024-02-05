@@ -64,12 +64,12 @@ function stopTimer() {
 }
 function updateTimer() {
    const time = document.querySelector(".timer");
-   time.innerText = formatTimer();
+   time.innerText = formatTimer(seconds);
 }
 
-function formatTimer() {
-   const minutes = Math.floor(seconds / 60);
-   const secondsValue = seconds % 60;
+function formatTimer(s) {
+   const minutes = Math.floor(s / 60);
+   const secondsValue = s % 60;
    const minCorrect = String(minutes).padStart(2, "0");
    const secCorrect = String(secondsValue).padStart(2, "0");
 
@@ -508,9 +508,7 @@ function ChoseLevel() {
    modalContent.classList.add("modal-content");
    const title = document.createElement("h2");
    title.innerHTML = "(1-5) = Easy 5x5 <br> (6-10) = Medium 10x10 <br> (11-15) = Hard 15x15";
-
    modalContent.appendChild(title);
-
    for (let i = 0; i < arrOfMystery.length; i++) {
       const levelBtn = document.createElement("button");
       levelBtn.textContent = `Level ${i + 1}`;
@@ -551,7 +549,8 @@ function leaderBoard() {
    for (let i = 0; i < Math.min(5, leaderboard.length); i++) {
       const result = leaderboard[i];
       const resultItem = document.createElement("p");
-      resultItem.textContent = `${i + 1}. Task: ${result.task}, Time: ${result.time} seconds`;
+      const timer = formatTimer(result.time)
+      resultItem.textContent = `${i + 1}. Task: "${result.task}", Time: ${timer}`;
       modalContent.appendChild(resultItem);
    }
    const chooseLevelBtn = document.createElement("button");
