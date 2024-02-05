@@ -19,10 +19,15 @@ const winSound = new Audio("assets/sounds/win.mp3");
 const deleteSound = new Audio("assets/sounds/del.mp3");
 const xSound = new Audio("assets/sounds/x.mp3");
 const bSound = new Audio("assets/sounds/b.mp3");
+const nSound = new Audio("assets/sounds/Fail-save.mp3");
 function playBSound() {
    bSound.currentTime = 0;
    bSound.playbackRate = 2;
    bSound.play();
+}
+function playNSound() {
+   nSound.currentTime = 0;
+   nSound.play();
 }
 function playXSound() {
    xSound.currentTime = 0;
@@ -250,8 +255,6 @@ botContainer.appendChild(leftPodskazki);
 botContainer.appendChild(nonograma);
 gameContainer.appendChild(botContainer);
 
-// gameContainer.appendChild(nonogramaCont);
-
 document.body.appendChild(gameContainer);
 
 function handleCellClick(event) {
@@ -426,19 +429,54 @@ function restartGame() {
    playAgain();
    resetTimer();
 }
+function arrCheck(arr1, arr2) {
+   if (arr1.length !== arr2.length) return false;
+
+   for (let i = 0; i < arr1.length; i++) {
+      if (arr1[i] !== arr2[i]) return false;
+   }
+
+   return true;
+}
+
 function saveGame() {
-   saveObj = { ...nanObj };
-   saveObj.sost = newArr;
-   saveObj.timer = seconds;
-   let newObJJSON = JSON.stringify(saveObj);
-   localStorage.setItem("saveObj", newObJJSON);
-   console.log("save game");
-   console.log(saveObj);
+   const rows = document.querySelectorAll(".row-container");
+   const extractedState = [];
+
+   rows.forEach((row) => {
+      const cells = row.querySelectorAll(".cell");
+      const rowState = [];
+
+      cells.forEach((cell) => {
+         if (cell.classList.contains("black")) {
+            rowState.push(1);
+         } else {
+            rowState.push(0);
+         }
+      });
+
+      extractedState.push(...rowState);
+   });
+
+   console.log(extractedState);
+   console.log(nanObj.sol);
+
+   if (arrCheck(extractedState, nanObj.sol)) {
+      playNSound();
+   } else {
+      saveObj = { ...nanObj };
+      saveObj.sost = newArr;
+      saveObj.timer = seconds;
+      let newObJJSON = JSON.stringify(saveObj);
+      localStorage.setItem("saveObj", newObJJSON);
+      console.log("save game");
+      console.log(saveObj);
+   }
 }
 
 function showSolution() {
    nonograma.innerHTML = "";
-   nonograma.style.gridTemplateColumns = `repeat(${saveObj.size}, var(--razmer-cell))`;
+   console.log(nanObj);
    renderNonogramForSol();
 }
 
@@ -453,9 +491,18 @@ function loadGame() {
       updateTimer();
       console.log("Игра загружена");
       playAgainSave();
+      findnanObj();
       startTimer();
    } else {
       alert("Нет сохранений");
+   }
+}
+function findnanObj() {
+   for (const mysteryObj of arrOfMystery) {
+      if (mysteryObj.task === saveObj.task) {
+         nanObj = mysteryObj;
+         break;
+      }
    }
 }
 
@@ -551,9 +598,9 @@ function renderNonogramForSol() {
       for (let j = 0; j < nanObj.size; j++) {
          const cell = document.createElement("div");
          cell.classList.add("cell");
-         cell.classList.add(nanObj.sol[i * nanObj.size + j] === 1 ? "black" : nanObj.sol[i * nanObj.size + j] === 2 ? "x" : "white");
+         cell.classList.add(nanObj.sol[i * nanObj.size + j] === 1 ? "black" : nanObj.sol[i * nanObj.size + j] === 0 ? "x" : "white");
 
-         if (nanObj.sol[i * nanObj.size + j] === 2) {
+         if (nanObj.sol[i * nanObj.size + j] === 0) {
             cell.textContent = "X";
          } else {
             cell.textContent = "";

@@ -43,9 +43,7 @@ body {
    display: flex;
    align-items: center;
    justify-content: space-around;
-   font-size: xx-large;
    font-family: monospace;
-   font-weight: bold;
    cursor: default;
    margin: calc(var(--razmer2) / 10);
 }
@@ -58,7 +56,7 @@ body {
 }
 
 .cell.x {
-   background-color: rgb(184, 150, 150);
+   background-color: rgba(239, 239, 172, 0.412);
 }
 
 .mask {

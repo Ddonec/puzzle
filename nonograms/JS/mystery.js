@@ -44,7 +44,7 @@ export const nan4 = {
    timer: 0,
 };
 export const nan5 = {
-   task: "Загадка 4",
+   task: "Загадка 5",
    size: 5,
    widthP: 5,
 
@@ -68,7 +68,7 @@ export const nan5 = {
    timer: 0,
 };
 export const nan6 = {
-   task: "Загадка 10",
+   task: "Загадка 6",
    size: 10,
    widthP: 10,
    sost: Array(100).fill(0),
@@ -81,7 +81,7 @@ export const nan6 = {
    timer: 0,
 };
 export const nan7 = {
-   task: "Загадка 10",
+   task: "Загадка 7",
    size: 10,
    widthP: 10,
    sost: Array(100).fill(0),
@@ -94,7 +94,7 @@ export const nan7 = {
    timer: 0,
 };
 export const nan8 = {
-   task: "Загадка 10",
+   task: "Загадка 8",
    size: 10,
    widthP: 10,
    sost: Array(100).fill(0),
@@ -129,7 +129,7 @@ export const nan8 = {
    timer: 0,
 };
 export const nan9 = {
-   task: "Загадка 10",
+   task: "Загадка 9",
    size: 10,
    widthP: 10,
    sost: Array(100).fill(0),
@@ -155,7 +155,7 @@ export const nan10 = {
    timer: 0,
 };
 export const nan11 = {
-   task: "Загадка 15",
+   task: "Загадка 12",
    size: 15,
    widthP: 15,
 
@@ -171,7 +171,7 @@ export const nan11 = {
    timer: 0,
 };
 export const nan12 = {
-   task: "Загадка 15",
+   task: "Загадка 12",
    size: 15,
    widthP: 15,
 
@@ -187,7 +187,7 @@ export const nan12 = {
    timer: 0,
 };
 export const nan13 = {
-   task: "Загадка 15",
+   task: "Загадка 13",
    size: 15,
    widthP: 15,
 
@@ -203,7 +203,7 @@ export const nan13 = {
    timer: 0,
 };
 export const nan14 = {
-   task: "Загадка 15",
+   task: "Загадка 14",
    size: 15,
    widthP: 15,
 
