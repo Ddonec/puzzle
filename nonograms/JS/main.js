@@ -63,7 +63,6 @@ function stopTimer() {
    clearInterval(timer);
 }
 function updateTimer() {
-//    console.log(seconds);
    const time = document.querySelector(".timer");
    time.innerText = formatTimer();
 }
