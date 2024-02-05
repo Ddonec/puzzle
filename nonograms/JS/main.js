@@ -364,7 +364,7 @@ function createModal() {
    modalContent.classList.add("modal-content");
 
    const message = document.createElement("p");
-   message.textContent = `Отлично! Вы решили нонограмму за ${formatTimer(seconds)} !`;
+   message.textContent = `Отлично! Вы решили нонограмму за ${formatTimer(seconds)} секунд!`;
    stopTimer();
 
    const chooseLevelBtns = document.createElement("button");
@@ -515,7 +515,8 @@ function ChoseLevel() {
    const modalContent = document.createElement("div");
    modalContent.classList.add("modal-content");
    const title = document.createElement("h2");
-   title.textContent = "Choose Level";
+   title.innerHTML = "(1-5) = Easy 5x5 <br> (6-10) = Medium 10x10 <br> (11-15) = Hard 15x15";
+
    modalContent.appendChild(title);
 
    for (let i = 0; i < arrOfMystery.length; i++) {
