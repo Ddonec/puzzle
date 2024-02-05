@@ -3,6 +3,7 @@
    --razmer2: 2vw;
    --razmer-cell: 50px;
    --dark-bg: grey;
+   --border: salmon;
 }
 
 body {
@@ -26,10 +27,9 @@ body {
 #nonograma {
    display: grid;
    grid-template-columns: repeat(5, 1fr);
-   border: 5px solid salmon;
+   border: 5px solid var(--border);
 }
 #nonogramaCont {
-   /* aspect-ratio: 1; */
    position: relative;
 }
 
@@ -91,7 +91,7 @@ body {
    content: "";
    position: absolute;
    width: 1px;
-   background-color: salmon;
+   background-color: var(--border);
    height: 100%;
    left: 0;
 }
@@ -99,7 +99,7 @@ body {
    content: "";
    position: absolute;
    width: 1px;
-   background-color: salmon;
+   background-color: var(--border);
    height: 100%;
    right: 0;
 }
@@ -135,7 +135,7 @@ body {
    bottom: 0;
    height: 1px;
    width: 100%;
-   background-color: salmon;
+   background-color: var(--border);
 }
 .podsk1::before {
    content: "";
@@ -143,7 +143,7 @@ body {
    top: 0;
    height: 1px;
    width: 100%;
-   background-color: salmon;
+   background-color: var(--border);
 }
 .podsk1:nth-child(5n + 6):not(:last-child)::before {
    height: 2px;
@@ -187,7 +187,7 @@ body {
    font-size: 16px;
    cursor: pointer;
    border-radius: 4px;
-   margin: 10px;
+   margin: 1dvh;
 }
 .fill {
    position: fixed;
@@ -200,7 +200,7 @@ body {
    z-index: 1;
 }
 .timer {
-   border: 2px solid salmon;
+   border: 2px solid var(--border);
    border-radius: 10px;
    padding: 10px 20px;
 }
@@ -208,7 +208,6 @@ body {
 .button-container {
    display: flex;
    flex-direction: column;
-   gap: 10px;
 }
 .button-container button {
    background-color: slategray;
@@ -331,7 +330,17 @@ body {
       display: none;
    }
    .control-panel {
-      width: 55vw;
+      width: 60vw;
       justify-content: space-between;
+   }
+   .toggle-theme-switch {
+      order: 1;
+   }
+   .modal {
+      width: 80%;
+      padding: 5%;
+   }
+   .modal-content > button {
+      margin: 1vw;
    }
 }

@@ -171,9 +171,13 @@ controlPanel.appendChild(timerZone);
 
 function toggleTheme() {
    const body = document.body;
-
    themeSwitch.dataset.theme = themeSwitch.dataset.theme === "light" ? "dark" : "light";
    body.classList.toggle("dark", themeSwitch.dataset.theme === "dark");
+   if (themeSwitch.dataset.theme === "dark") {
+      document.documentElement.style.setProperty("--border", "black");
+   } else {
+      document.documentElement.style.removeProperty("--border", "salmon");
+   }
 }
 themeSwitch.addEventListener("click", toggleTheme);
 
@@ -271,7 +275,6 @@ function handleCellClick(event) {
       if (!timer) {
          startTimer();
       }
-    //   console.log(newArr);
    }
 }
 
@@ -331,7 +334,6 @@ function WinCheck(arr1, arr2) {
    }, []);
 
    if (JSON.stringify(possArr1) === JSON.stringify(possArr2)) {
-    //   console.log("успех");
       winSound.play();
 
       const taskName = nanObj.task;
@@ -349,7 +351,6 @@ function WinCheck(arr1, arr2) {
 
       createModal();
    } else {
-    //   console.log("не успех");
    }
 }
 function createModal() {
@@ -424,7 +425,6 @@ function playAgainSave() {
    renderNonogram(saveObj);
 }
 function restartGame() {
-//    console.log("restart game");
    playAgain();
    resetTimer();
 }
@@ -457,9 +457,6 @@ function saveGame() {
       extractedState.push(...rowState);
    });
 
-//    console.log(extractedState);
-//    console.log(nanObj.sol);
-
    if (arrCheck(extractedState, nanObj.sol)) {
       playNSound();
    } else {
@@ -468,14 +465,11 @@ function saveGame() {
       saveObj.timer = seconds;
       let newObJJSON = JSON.stringify(saveObj);
       localStorage.setItem("saveObj", newObJJSON);
-    //   console.log("save game");
-    //   console.log(saveObj);
    }
 }
 
 function showSolution() {
    nonograma.innerHTML = "";
-//    console.log(nanObj);
    renderNonogramForSol();
 }
 
@@ -488,7 +482,6 @@ function loadGame() {
       saveObj = JSON.parse(saveObjJSON);
       seconds = saveObj.timer || 0;
       updateTimer();
-    //   console.log("Игра загружена");
       playAgainSave();
       findnanObj();
       startTimer();
@@ -534,16 +527,13 @@ function ChoseLevel() {
 
 function choseLevelBtn(levelIndex) {
    nanObj = arrOfMystery[levelIndex];
-//    console.log(`Chose level ${levelIndex + 1}`);
    playAgain();
    resetTimer();
 }
 
 function leaderBoard() {
-//    console.log("Leaderboard");
-
    const leaderboardJSON = localStorage.getItem("leaderboard");
-   const leaderboard = leaderboardJSON ? JSON.parse(leaderboardJSON) : [];
+   const leaderboard = leaderboardJSON ? JSON.parse(leaderboardJSON) : alert("еще не было побед");
 
    const fill = document.createElement("div");
    fill.classList.add("fill");
@@ -583,7 +573,6 @@ function leaderBoard() {
    document.body.appendChild(fill);
 }
 function randomGame() {
-//    console.log("randomGame");
    const randomIndex = Math.floor(Math.random() * arrOfMystery.length);
    nanObj = arrOfMystery[randomIndex];
    playAgain();
@@ -594,7 +583,6 @@ function renderNonogramForSol() {
    for (let i = 0; i < nanObj.size; i++) {
       const rowContainer = document.createElement("div");
       rowContainer.classList.add("row-container");
-
       for (let j = 0; j < nanObj.size; j++) {
          const cell = document.createElement("div");
          cell.classList.add("cell");
@@ -605,10 +593,8 @@ function renderNonogramForSol() {
          } else {
             cell.textContent = "";
          }
-
          rowContainer.appendChild(cell);
       }
-
       nonograma.appendChild(rowContainer);
    }
 }
