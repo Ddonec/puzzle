@@ -175,8 +175,14 @@ body {
    box-shadow: 0 5px 30px rgba(0, 0, 0, 0.2);
    z-index: 2;
 }
-.modal-content {
+.modal-content,
+.check-lvl-title {
    text-align: center;
+   column-count: 3;
+   column-gap: 10px;
+}
+.check-lvl-title p {
+    margin: 0;
 }
 
 .modal-content > button {
@@ -188,6 +194,7 @@ body {
    cursor: pointer;
    border-radius: 4px;
    margin: 1dvh;
+   width: 100%;
 }
 .fill {
    position: fixed;
