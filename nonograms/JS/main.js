@@ -505,10 +505,10 @@ function ChoseLevel() {
    modal.classList.add("modal");
 
    const modalContent = document.createElement("div");
-   modalContent.classList.add("modal-content");
-   const title = document.createElement("h2");
-   title.innerHTML = "(1-5) = Easy 5x5 <br> (6-10) = Medium 10x10 <br> (11-15) = Hard 15x15";
-   modalContent.appendChild(title);
+   modalContent.classList.add("modal-content-chose");
+   const title = document.createElement("div");
+   title.classList.add("check-lvl-title");
+   title.innerHTML = "<p>(1-5) = Easy 5x5 </p><p> (6-10) = Medium 10x10</p> <p> (11-15) = Hard 15x15</p>";
    for (let i = 0; i < arrOfMystery.length; i++) {
       const levelBtn = document.createElement("button");
       levelBtn.textContent = `Level ${i + 1}`;
@@ -518,9 +518,11 @@ function ChoseLevel() {
       });
       modalContent.appendChild(levelBtn);
    }
+   modal.appendChild(title);
    modal.appendChild(modalContent);
    document.body.appendChild(modal);
    document.body.appendChild(fill);
+   fill.addEventListener("click", () => closeModal());
 }
 
 function choseLevelBtn(levelIndex) {
@@ -549,8 +551,19 @@ function leaderBoard() {
    for (let i = 0; i < Math.min(5, leaderboard.length); i++) {
       const result = leaderboard[i];
       const resultItem = document.createElement("p");
-      const timer = formatTimer(result.time)
-      resultItem.textContent = `${i + 1}. Task: "${result.task}", Time: ${timer}`;
+      const timer = formatTimer(result.time);
+      let level = "";
+      if (result.size === 5) {
+         level = "Easy";
+      }
+      if (result.size === 10) {
+         level = "Medium";
+      }
+      if (result.size === 15) {
+         level = "Hard";
+      }
+
+      resultItem.textContent = `${i + 1}. Task: "${result.task}", Level: ${level}, Time: ${timer}`;
       modalContent.appendChild(resultItem);
    }
    const chooseLevelBtn = document.createElement("button");
@@ -570,6 +583,7 @@ function leaderBoard() {
    modal.appendChild(modalContent);
    document.body.appendChild(modal);
    document.body.appendChild(fill);
+   fill.addEventListener("click", () => closeModal());
 }
 function randomGame() {
    const randomIndex = Math.floor(Math.random() * arrOfMystery.length);

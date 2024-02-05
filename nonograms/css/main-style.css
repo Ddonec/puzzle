@@ -178,6 +178,15 @@ body {
 .modal-content {
    text-align: center;
 }
+.modal-content-chose,
+.check-lvl-title {
+   text-align: center;
+   column-count: 3;
+   column-gap: 10px;
+}
+.check-lvl-title p {
+   margin: 0;
+}
 
 .modal-content > button {
    background: chocolate;
@@ -188,6 +197,17 @@ body {
    cursor: pointer;
    border-radius: 4px;
    margin: 1dvh;
+}
+.modal-content-chose > button {
+   background: chocolate;
+   color: white;
+   border: none;
+   padding: 10px 20px;
+   font-size: 16px;
+   cursor: pointer;
+   border-radius: 4px;
+   margin: 1dvh;
+   width: 100%;
 }
 .fill {
    position: fixed;
