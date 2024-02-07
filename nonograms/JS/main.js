@@ -508,10 +508,10 @@ function ChoseLevel() {
    modalContent.classList.add("modal-content-chose");
    const title = document.createElement("div");
    title.classList.add("check-lvl-title");
-   title.innerHTML = "<p>(1-5) = Easy 5x5 </p><p> (6-10) = Medium 10x10</p> <p> (11-15) = Hard 15x15</p>";
+   title.innerHTML = "<p>Easy 5x5 </p><p>Medium 10x10</p> <p>Hard 15x15</p>";
    for (let i = 0; i < arrOfMystery.length; i++) {
       const levelBtn = document.createElement("button");
-      levelBtn.textContent = `Level ${i + 1}`;
+      levelBtn.textContent = `${arrOfMystery[i].task}`;
       levelBtn.addEventListener("click", () => {
          choseLevelBtn(i);
          closeModal();
