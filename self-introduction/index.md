@@ -1,10 +1,10 @@
 [Youtube video link](https://www.youtube.com/watch?v=dNKTzK42O-Q&ab_channel=AntonDonskoy)
 
-#**Greetings:**
+# **Greetings:**
 
 Greetings to you, dear peers and mentors. My name is Anton, and I am a junior frontend developer. Today I would like to share with you my path in programming and tell you about my professional plans.
 
-#**Education:**
+# **Education:**
 
 I'm taking a course at RS School. I have always been fond of technology and decided to take a plunge into the world of web development. In the process of learning I improved my development skills and by now I can say that I have a good level of basic things like HTML, CSS, Vanilla JS. I know how to work with cookies and local storage. I know what node js is, I understand how to run code outside the browser, I know how preprocessors like sass and scss work. I also know how to work with Git, a version control and storage system, as well as the web interface and GitHub application. 
 I originally started my journey by learning the basics of html and css in order to prepare for the stage 0 course which started in June 2023. 
