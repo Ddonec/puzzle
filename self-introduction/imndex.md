@@ -1,3 +1,5 @@
+Youtube video link: https://www.youtube.com/watch?v=dNKTzK42O-Q&ab_channel=AntonDonskoy
+
 ###Greetings:
 
 Greetings to you, dear peers and mentors. My name is Anton, and I am a junior frontend developer. Today I would like to share with you my path in programming and tell you about my professional plans.
