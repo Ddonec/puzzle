@@ -12,3 +12,9 @@ in this module I learned what TypwScript is, how to install dependencies and pre
 in this module I learned how to Declare variables using primitive principles,
 using various objects,
 using the definitions of union and interaction.
+
+
+## Complete 3rd level and get achivment: [this](https://learn.microsoft.com/api/achievements/share/en-us/Ddonec-5394/9N5MN24U?sharingId=51056E77C4FF8916)
+
+in this module I learned how to use interfaces in TypeScript, as well as
+declare interfaces with custom array types.
