@@ -44,3 +44,11 @@ I learned about using generics, defining a generic function, declaring a generic
 I can also now use restrictions.
 
 For example:(function nameFunction<T>(items : T[]) : T[]{function make}. interface i<T, U> {v1: v2: U})
+
+## Complete 7th level and get achivment: [this](https://learn.microsoft.com/api/achievements/share/en-us/Ddonec-5394/ZPX35UQ2?sharingId=51056E77C4FF8916)
+
+In this module I learned how to organize code using modules and import external type library.
+
+For example:(export, import. --module command, dotenv library .env file)
+
+
