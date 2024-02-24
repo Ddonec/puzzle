@@ -51,4 +51,8 @@ In this module I learned how to organize code using modules and import external 
 
 For example:(export, import. --module command, dotenv library .env file)
 
+## Complete 8th level and get achivment: [this](https://learn.microsoft.com/api/achievements/share/en-us/Ddonec-5394/WA9SK9BN?sharingId=51056E77C4FF8916)
 
+In this module I learned about namespaces, implemented namespaces, implemented multi-file namespaces. Now I understand the design considerations of using namespaces and modules.
+
+For example:(namespace, /// syntax and reference)
