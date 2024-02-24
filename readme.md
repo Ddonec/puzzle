@@ -56,3 +56,9 @@ For example:(export, import. --module command, dotenv library .env file)
 In this module I learned about namespaces, implemented namespaces, implemented multi-file namespaces. Now I understand the design considerations of using namespaces and modules.
 
 For example:(namespace, /// syntax and reference)
+
+
+
+## conclusion:
+
+In general, I understand the properties and methods that are used in Type Script, I understand that this language is closely related to the principles of object-oriented programming, but I still don’t clearly understand how I will use it in my work, I think that with practice I will understand better
