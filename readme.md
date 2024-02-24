@@ -30,10 +30,17 @@ In this fourth module I learned about the benefits of using types in functions. 
 
 For example:(Named functions, Anonymous functions, Arrow functions. Required parameters, optional parameters, default parameters, rest Parameters)
 
-## complete 5th level and get achivment: [this](https://learn.microsoft.com/api/achievements/share/en-us/Ddonec-5394/BLQREWHD?sharingId=51056E77C4FF8916)
+## Complete 5th level and get achivment: [this](https://learn.microsoft.com/api/achievements/share/en-us/Ddonec-5394/BLQREWHD?sharingId=51056E77C4FF8916)
 
 I studied module 5 and became familiar with classes in TypeScript. Now I know how to declare classes, use classes to describe the shape of objects, create an instance of a class, use class access modifiers, define static properties in a class, declare a class that extends another class.
 
 Know when to use an interface or a class to define the structure of an object.
 
 for example:(public, private, protected. constuctor. set, get. extend, implements)
+
+## Complete 6th level ang get achivment: [this](https://learn.microsoft.com/api/achievements/share/en-us/Ddonec-5394/FZ3L27QX?sharingId=51056E77C4FF8916)
+
+I learned about using generics, defining a generic function, declaring a generic interface, and declaring a generic class.
+I can also now use restrictions.
+
+For example:(function nameFunction<T>(items : T[]) : T[]{function make}. interface i<T, U> {v1: v2: U})
