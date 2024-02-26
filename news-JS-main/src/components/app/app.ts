@@ -1,6 +1,6 @@
 import AppController from '../controller/controller';
 import { AppView } from '../view/appView';
-import { isNullOrUndefined } from '../../types/typeCheck.functions';
+import { isNullOrUndefined } from '../../helpers/typeCheck';
 
 class App {
     private controller: AppController;

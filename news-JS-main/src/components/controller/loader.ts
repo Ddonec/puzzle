@@ -1,4 +1,5 @@
-import { Options } from '../../types/options.types';
+import { Options } from '../../types/options.type';
+import { ErrorTypes400 } from '../../types/errors.enum';
 class Loader {
     private baseLink: string;
     private readonly options: Readonly<Options>;
@@ -18,8 +19,11 @@ class Loader {
 
     errorHandler(res: Response): Response {
         if (!res.ok) {
-            if (res.status === 401 || res.status === 404)
+            if (res.status === ErrorTypes400.Unauthorized || res.status === ErrorTypes400.NotFound) {
                 console.log(`Sorry, but there is ${res.status} error: ${res.statusText}`);
+            } else {
+                console.error(`An error occurred: ${res.status} ${res.statusText}`);
+            }
             throw Error(res.statusText);
         }
 

@@ -1,6 +1,6 @@
 import './news.css';
 import { NewsItem } from '../../../types/data.interface';
-import { isNullOrUndefined } from '../../../types/typeCheck.functions';
+import { isNullOrUndefined } from '../../../helpers/typeCheck';
 import defaultImage from '../../../assets/img/newspaper_PNG9.png';
 
 class News {

@@ -1,3 +1,8 @@
+export interface Source {
+    name: string;
+    id: string;
+}
+
 export interface NewsItem {
     id: string;
     url: string;
@@ -7,7 +12,7 @@ export interface NewsItem {
     publishedAt: string;
     title: string;
     description: string;
-    source: { name: string; id: string };
+    source: Source;
 }
 
 export interface NewsData extends NewsItem {
@@ -19,8 +24,9 @@ export interface NewsData extends NewsItem {
 
 export interface NewsSource {
     status: string;
-    sources: NewsData[] | undefined;
+    sources: NewsData[];
 }
+
 export interface Articles {
     id: string;
     url: string;
@@ -30,5 +36,5 @@ export interface Articles {
     name: string;
     title: string;
     description: string;
-    source: { name: string; id: string };
+    source: Source;
 }
