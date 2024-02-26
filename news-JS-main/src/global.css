@@ -127,7 +127,22 @@ input:checked + .slider:before {
 .news-container {
     width: 55%;
 }
-
+.rsschool-logo {
+    width: 140px;
+    height: 50px;
+    background-image: url(assets/icon/rs_school_js.svg);
+}
+.git-logo {
+    height: 50px;
+    width: 50px;
+    background-image: url(assets/icon/icons8-github-144.svg);
+}
+.git-logo,
+.rsschool-logo {
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+}
 @media (max-width: 1000px) {
     main {
         flex-direction: column;
