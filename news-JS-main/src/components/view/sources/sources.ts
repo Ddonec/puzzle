@@ -1,5 +1,6 @@
 import './sources.css';
 import { NewsItem } from '../../../types/data.interface';
+import { ErrorType } from '../../../types/errors.enum';
 
 class Sources {
     draw(data: NewsItem[]) {
@@ -8,7 +9,7 @@ class Sources {
 
         if (!sourceItemTemp) {
             console.error('Template element not found');
-            return;
+            return ErrorType.TemplateNotFound;
         }
 
         data.forEach((item) => {
@@ -27,11 +28,11 @@ class Sources {
         const sourcesContainer = document.querySelector<HTMLElement>('.sources');
         if (!sourcesContainer) {
             console.error('Container element not found');
-            return;
+            return ErrorType.ContainerNotFound;
         }
 
         sourcesContainer.append(fragment);
     }
 }
 
-export default Sources;
+export { Sources, ErrorType };

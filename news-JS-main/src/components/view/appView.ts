@@ -1,5 +1,5 @@
 import News from './news/news';
-import Sources from './sources/sources';
+import { Sources, ErrorType } from './sources/sources';
 import { NewsData, NewsSource } from '../../types/data.interface';
 
 export class AppView {
@@ -18,7 +18,12 @@ export class AppView {
 
     drawSources(data?: NewsSource) {
         const values = data?.sources ? data?.sources : [];
-        this.sources.draw(values);
+        const error = this.sources.draw(values);
+        if (error === ErrorType.TemplateNotFound) {
+            console.error('Template element not found');
+        } else if (error === ErrorType.ContainerNotFound) {
+            console.error('Container element not found');
+        }
     }
 }
 
