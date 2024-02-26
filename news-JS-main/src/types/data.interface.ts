@@ -19,7 +19,7 @@ export interface NewsData extends NewsItem {
 
 export interface NewsSource {
     status: string;
-    sources: NewsData[];
+    sources: NewsData[] | undefined;
 }
 export interface Articles {
     id: string;
