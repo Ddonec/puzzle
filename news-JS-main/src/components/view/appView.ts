@@ -3,8 +3,8 @@ import { Sources, ErrorType } from './sources/sources';
 import { NewsData, NewsSource } from '../../types/data.interface';
 
 export class AppView {
-    news: News;
-    sources: Sources;
+    private news: News;
+    private sources: Sources;
 
     constructor() {
         this.news = new News();

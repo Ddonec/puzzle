@@ -1,7 +1,7 @@
 import { Options } from '../../types/options.types';
 class Loader {
     private baseLink: string;
-    private options: Options;
+    private readonly options: Readonly<Options>;
     constructor(baseLink: string, options: Options) {
         this.baseLink = baseLink;
         this.options = options;
@@ -45,5 +45,4 @@ class Loader {
             .catch((err) => console.error(err));
     }
 }
-// console.log(Loader);
 export default Loader;
