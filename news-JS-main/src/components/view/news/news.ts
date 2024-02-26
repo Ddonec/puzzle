@@ -1,6 +1,7 @@
 import './news.css';
 import { NewsItem } from '../../../types/data.interface';
 import { isNullOrUndefined } from '../../../types/typeCheck.functions';
+import defaultImage from '../../../assets/img/newspaper_PNG9.png';
 
 class News {
     draw(data: NewsItem[]) {
@@ -24,7 +25,7 @@ class News {
 
             const newsMetaPhoto = newsClone.querySelector<HTMLStyleElement>('.news__meta-photo');
             if (newsMetaPhoto) {
-                newsMetaPhoto.style.backgroundImage = `url(${item.urlToImage || 'img/news_placeholder.jpg'})`;
+                newsMetaPhoto.style.backgroundImage = 'url(' + item.urlToImage || defaultImage + ')';
             }
 
             const newsMetaAuthorElement = isNullOrUndefined(newsClone.querySelector('.news__meta-author'));
