@@ -1,13 +1,16 @@
 .sources {
     display: flex;
-    flex-wrap: nowrap;
-    width: 100%;
-    height: 120px;
-    overflow: auto;
-    align-items: center;
+    flex-wrap: wrap;
+    width: 45%;
+    height: 100%;
+    overflow-y: auto;
     font:
         300 1em 'Fira Sans',
         sans-serif;
+    justify-content: space-between;
+}
+.sources::-webkit-scrollbar {
+    display: none;
 }
 
 body.light .source__item {
