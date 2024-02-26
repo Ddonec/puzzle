@@ -2,7 +2,7 @@ import AppLoader from './appLoader';
 import { NewsSource, NewsData } from '../../types/data.interface';
 
 class AppController extends AppLoader {
-    getSources(callback: (data?: NewsSource) => void) {
+    public getSources(callback: (data?: NewsSource) => void): void {
         super.getResp(
             {
                 endpoint: 'sources',
@@ -11,31 +11,30 @@ class AppController extends AppLoader {
         );
     }
 
-    getNews(e: Event, callback: (data?: NewsData) => void) {
-        let target = e.target as HTMLElement;
-        const newsContainer = e.currentTarget as HTMLElement;
-
-        while (target !== newsContainer) {
-            if (target.classList.contains('source__item')) {
-                const sourceId = target.getAttribute('data-source-id');
-                if (sourceId && newsContainer.getAttribute('data-source') !== sourceId) {
-                    newsContainer.setAttribute('data-source', sourceId);
-                    super.getResp(
-                        {
-                            endpoint: 'everything',
-                            options: {
-                                sources: sourceId,
+    public getNews(e: Event, callback: (data?: NewsData) => void): void {
+        let target = e.target;
+        const newsContainer = e.currentTarget;
+        if (newsContainer instanceof HTMLElement) {
+            while (target !== newsContainer) {
+                if (target instanceof HTMLElement && target.classList.contains('source__item')) {
+                    const sourceId = target.getAttribute('data-source-id');
+                    if (sourceId && newsContainer.getAttribute('data-source') !== sourceId) {
+                        newsContainer.setAttribute('data-source', sourceId);
+                        super.getResp(
+                            {
+                                endpoint: 'everything',
+                                options: {
+                                    sources: sourceId,
+                                },
                             },
-                        },
-                        callback
-                    );
+                            callback
+                        );
+                    }
+                    return;
                 }
-                return;
-            }
-            if (target.parentNode) {
-                target = target.parentNode as HTMLElement;
-            } else {
-                break;
+                if (target instanceof Node && target.parentNode instanceof HTMLElement) {
+                    target = target.parentNode;
+                }
             }
         }
     }
