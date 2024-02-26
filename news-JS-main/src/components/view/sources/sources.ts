@@ -3,7 +3,7 @@ import { NewsItem } from '../../../types/data.interface';
 import { ErrorType } from '../../../types/errors.enum';
 
 class Sources {
-    draw(data: NewsItem[]) {
+    draw(data: NewsItem[]): number | void {
         const fragment = document.createDocumentFragment();
         const sourceItemTemp = document.querySelector<HTMLTemplateElement>('#sourceItemTemp');
 
