@@ -20,7 +20,7 @@ class News {
 
                 const newsMetaPhoto = newsClone.querySelector<HTMLStyleElement>('.news__meta-photo');
                 if (newsMetaPhoto) {
-                    newsMetaPhoto.style.backgroundImage = 'url(' + item.urlToImage || defaultImage + ')';
+                    newsMetaPhoto.style.backgroundImage = `url(${item.urlToImage || defaultImage})`;
                 }
 
                 const newsMetaAuthorElement = isNullOrUndefined(newsClone.querySelector('.news__meta-author'));
