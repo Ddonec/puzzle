@@ -4,8 +4,17 @@ body {
     font-family: sans-serif;
 }
 
+body.light {
+    color: #000000;
+    background: #f6f2de;
+}
+
+
 header {
     padding: 10px 30px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 header h1 {
