@@ -6,7 +6,8 @@ export function setTheme(themeName: string): void {
 export function darkLightSwapper(checkbox: HTMLInputElement): void {
     if (checkbox.checked) {
         setTheme('light');
-    } else {
-        setTheme('dark');
+        return;
     }
+    setTheme('dark');
 }
+ 

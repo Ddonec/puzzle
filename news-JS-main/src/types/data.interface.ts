@@ -16,13 +16,13 @@ export interface NewsItem {
 }
 
 export interface NewsData extends NewsItem {
-    category?: string;
-    language?: string;
-    country?: string;
-    articles?: Articles[];
+    category: string;
+    language: string;
+    country: string;
+    articles: Articles[];
 }
 
-export interface NewsSource {
+export interface NewsSource { 
     status: string;
     sources: NewsData[];
 }
