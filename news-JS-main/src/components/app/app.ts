@@ -3,16 +3,11 @@ import { AppView } from '../view/appView';
 import { isNullOrUndefined } from '../../helpers/typeCheck';
 
 class App {
-    private controller: AppController;
-    private view: AppView;
-
-    constructor() {
-        this.controller = new AppController();
-        this.view = new AppView();
-    }
+    private controller = new AppController();
+    private view = new AppView();
 
     public start(): void {
-        const abc = isNullOrUndefined(document.querySelector('.sources'));
+        const abc: Element = isNullOrUndefined(document.querySelector('.sources'));
         abc.addEventListener('click', (e: Event) => {
             this.controller.getNews(e, (data) => {
                 this.view.drawNews(data);

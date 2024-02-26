@@ -2,9 +2,11 @@ import Loader from './loader';
 
 class AppLoader extends Loader {
     constructor() {
-        super(process.env.API_URL as string, {
-            apiKey: process.env.API_KEY as string,
-        });
+        const apiUrl = process.env.API_URL;
+        const apiKey = process.env.API_KEY;
+        if (apiUrl && apiKey) {
+            super(apiUrl, { apiKey });
+        }
     }
 }
 console.log(AppLoader);
