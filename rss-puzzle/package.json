@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "devDependencies": {
-    "validate-branch-name": "^1.3.0",
+    "@commitlint/cli": "^19.0.3",
+    "@commitlint/config-conventional": "^19.0.3",
     "@typescript-eslint/eslint-plugin": "^6.21.0",
     "@typescript-eslint/parser": "^6.21.0",
     "eslint": "^8.56.0",
@@ -14,12 +15,11 @@
     "eslint-import-resolver-typescript": "^3.5.5",
     "eslint-import-resolver-webpack": "^0.13.2",
     "eslint-plugin-import": "^2.27.5",
+    "husky": "^8.0.0",
+    "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
     "typescript": "^5.4.2",
-    "@commitlint/cli": "^19.1.0",
-    "@commitlint/config-conventional": "^19.1.0",
-    "husky": "^8.0.0",
-    "lint-staged": "^15.2.2"
+    "validate-branch-name": "^1.3.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
