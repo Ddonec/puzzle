@@ -1,3 +1,3 @@
-import { CreateDrikki } from './components/login-page/login'
+import * as LoginTS from './components/login-page/login'
 
-CreateDrikki()
+LoginTS.div.addClass('default')
