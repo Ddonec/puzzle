@@ -1,6 +1,12 @@
+<<<<<<< HEAD
 { 
   "printWidth": 120, 
   "semi": false, 
+=======
+{
+  "printWidth": 120,
+  "semi": false,
+>>>>>>> eab030e636b97817d07260828a2bfffb868bd5cd
   "trailingComma": "all",
   "singleQuote": true
 }
