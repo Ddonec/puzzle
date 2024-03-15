@@ -1,5 +1,4 @@
 {
-   "rss-puzzle/src/**/*.{js,ts}": "npx eslint --fix",
-   "rss-puzzle/src/**/*": "npx prettier --list-different --write"
+  "src/**/*.{js,ts}": "npx eslint --fix",
+  "src/**/*": "npx prettier --list-different --write"
 }
- 
