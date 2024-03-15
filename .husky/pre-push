@@ -1,11 +1,4 @@
 #!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
 
-. "${0%/*}/_/h"
-
-
-BRANCH="$(git branch --show-current)"
-BRANCH_REGEXP="^(feat|fix|chore|docs|test|style|refactor|perf|build|ci|revert)/RSS-PZ-[0-9]{1,}_.{1,}$"
-
-if $BRANCH | grep -qE $BRANCH_REGEXP; then
-echo "Aborting push. Your branch name is invalid." >
-exit 1
+npx validate-branch-name -r "^(feat|fix|chore|docs|test|style|refactor|perf|build|ci|revert)/RSS-PZ-[0-9]{1,}_.{1,}$"
