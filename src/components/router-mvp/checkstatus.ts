@@ -1,4 +1,6 @@
-import { loginPageRender } from '../login-page/login-page'
+// eslint-disable-next-line import/no-cycle
+import { loginPageRender } from '../pages/login-page'
+import { startPageRender } from '../pages/start-page'
 
 interface GameData {
   login: boolean
@@ -30,7 +32,7 @@ export function rehderContent(): void {
     }
 
     if (gameData.start === true) {
-      console.log('Game is started')
+      startPageRender()
     } else {
       console.log('Game is not started')
     }

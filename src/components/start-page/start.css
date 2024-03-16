@@ -1,0 +1,14 @@
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  height: 100%;
+  gap: 3%;
+}
+.subtitle {
+  font-size: 15px;
+  width: 50%;
+  text-align: center;
+}
