@@ -2,6 +2,7 @@ import './login.css'
 import { BaseComponent } from 'src/components/basecomponent/base-components'
 import { Input } from './input'
 import { Button } from './button'
+// eslint-disable-next-line import/no-cycle
 import { toggleGameData } from '../router-mvp/switch'
 
 export const form = new BaseComponent({
@@ -49,7 +50,7 @@ export function setupSaveButtonListener(): void {
       if (validateForm(input1, input2)) {
         localStorage.setItem('Name', input1)
         localStorage.setItem('LastName', input2)
-        
+
         toggleGameData('start')
       }
     })

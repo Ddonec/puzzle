@@ -1,4 +1,4 @@
-import { form, inputName, inputSurName, SubmittButton } from './login'
+import { form, inputName, inputSurName, SubmittButton } from '../login-page/login'
 
 export function loginPageRender(): void {
   form.appendChildren(document.body)
