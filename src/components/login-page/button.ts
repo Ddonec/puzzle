@@ -5,11 +5,10 @@ interface ButtonProps extends BaseComponentProps {
   type: string
 }
 export class Button extends BaseComponent<HTMLButtonElement> {
-  constructor({ className, parent, text, type }: ButtonProps) {
+  constructor({ className, text, type }: ButtonProps) {
     super({
       tag: 'button',
       className,
-      parent,
       text,
     })
     if (type === 'button' || type === 'submit' || type === 'reset') {

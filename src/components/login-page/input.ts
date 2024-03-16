@@ -11,11 +11,10 @@ interface InputProps extends BaseComponentProps {
 export class Input extends BaseComponent<HTMLInputElement> {
   public isValid = false
 
-  constructor({ tag, className, parent, placeholder, type, minLength }: InputProps) {
+  constructor({ tag, className, placeholder, type, minLength }: InputProps) {
     super({
       tag,
       className,
-      parent,
     })
 
     this.element.setAttribute('placeholder', placeholder)

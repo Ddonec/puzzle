@@ -1,3 +1,3 @@
-import * as LoginTS from './components/login-page/login'
+import { rehderContent } from './components/router-mvp/checkstatus'
 
-LoginTS.form.addClass('default')
+rehderContent()
