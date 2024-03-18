@@ -1,0 +1,38 @@
+.start-btn {
+  padding: 10px 30px;
+  border-radius: 5px;
+  background: #018322;
+  transition: 0.3s;
+  border: unset;
+}
+.start-btn:hover {
+  background: #18ba41;
+  cursor: pointer;
+  border-radius: 10px;
+}
+
+.exit-btn {
+  padding: 10px 30px;
+  border-radius: 5px;
+  background: #953001;
+  transition: 0.3s;
+  border: unset;
+}
+.exit-btn:hover {
+  background: #ba2018;
+  cursor: pointer;
+  border-radius: 10px;
+}
+.s-btn {
+  padding: 10px 30px;
+  border-radius: 5px;
+  background: #011d83;
+  transition: 0.3s;
+  border: unset;
+  color: white;
+}
+.s-btn:hover {
+  background: #183bba;
+  cursor: pointer;
+  border-radius: 10px;
+}

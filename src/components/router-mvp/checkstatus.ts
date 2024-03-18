@@ -1,6 +1,6 @@
-// eslint-disable-next-line import/no-cycle
 import { loginPageRender } from '../pages/login-page'
 import { startPageRender } from '../pages/start-page'
+import { PlayPageRender } from '../play-page/play'
 
 interface GameData {
   login: boolean
@@ -38,7 +38,7 @@ export function rehderContent(): void {
     }
 
     if (gameData.game === true) {
-      console.log('Game is in progress')
+      PlayPageRender()
     } else {
       console.log('No game is in progress')
     }
