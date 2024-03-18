@@ -8,7 +8,7 @@ import { toggleGameData } from '../router-mvp/switch'
 export const form = new BaseComponent({
   tag: 'form',
   className: 'form',
-  text: 'hi',
+  text: 'Sup!',
 })
 
 export const inputName = new Input({

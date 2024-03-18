@@ -3,6 +3,11 @@ import { Button } from '../login-page/button'
 import './start.css'
 
 export const title = new BaseComponent({ tag: 'h1', className: 'title', text: 'Puzzle' })
+export const welcomeText = new BaseComponent({
+  tag: 'p',
+  className: 'welcome',
+  text: `Welcome, ${localStorage.getItem('Name') || 'Guest'} ${localStorage.getItem('LastName') || ''}!`,
+})
 export const gameInfo = new BaseComponent({
   tag: 'p',
   className: 'subtitle',

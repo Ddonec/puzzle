@@ -6,9 +6,25 @@ body {
   flex-wrap: wrap;
   height: 100%;
   gap: 3%;
+  background: url(https://images.unsplash.com/photo-1707343844152-6d33a0bb32c3?q=80&w=3270&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
 }
 .subtitle {
   font-size: 15px;
   width: 50%;
+  max-width: 600px;
   text-align: center;
+}
+
+* {
+  font-family: lato, sans-serif;
+}
+
+p,
+h1,
+form {
+  color: azure;
+  text-shadow: 0px 0px 5px black;
 }
