@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+npx validate-branch-name -r "^(feat|fix|chore|docs|test|style|refactor|perf|build|ci|revert)/RSS-PZ-[0-9]{1,}_.{1,}$"
